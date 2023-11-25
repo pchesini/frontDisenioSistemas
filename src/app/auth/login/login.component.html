@@ -1,0 +1,36 @@
+<form [formGroup]="formularioLogin">
+    <p class="text-danger">{{loginError}}</p>
+    <div class="card">
+        <div class="text-center mt-4 user-icon-container">
+            <i class="fas fa-user fa-2x"></i>
+        </div>
+        <div>
+
+            <div class="inputbox">
+                <span><i class="fas fa-user"></i> Email:</span>
+                <input formControlName="email" type="email" name="  Email" class="form-control" required="required">
+
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+                    <div *ngIf="email.errors?.['required']">El Email es Requerido.</div>
+                    <div *ngIf="email.errors?.['email']">Debe Tener un formato valido.</div>
+                    <div *ngIf="email.errors?.['minlength']">Debe tener al menos 4 caracteres.</div>
+                </div>
+            </div>
+            <div class="inputbox">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <span><i class="fas fa-lock"></i> CONTRASEÑA</span>
+                    <a href="#">Olvidaste la contraseña?</a>
+                </div>
+                <input formControlName="password" type="password" name="CONTRASEÑA" class="form-control" required="required">
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+                    <div *ngIf="password.errors?.['required']">El Password es Requerido.</div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="mt-2 proceed">
+            <button type="submit" (click)="login()" class="btn btn-primary btn-block">Iniciar Sesion</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,97 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #6455BD;
+    background: -webkit-linear-gradient(to right, #9a94bd, #6455BD);
+    background: linear-gradient(to right, #9a94bd, #6455BD)
+    
+}
+
+.card {
+    border-radius: 10px;
+    padding: 35px 26px;
+    width: 400px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 10); 
+}
+.user-icon-container {
+    width: 60px; 
+    height: 60px;
+    background-color: #010a13; 
+    border-radius: 50%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto; 
+    margin-top: -30px; /* deberia ajustar el margen superior para que esté más arriba pero no lo hace... */
+}
+
+
+.user-icon-container i {
+    color: white; 
+    font-size: 24px; 
+}
+.abt {
+    font-size: 14px
+}
+
+.inputbox {
+    margin-top: 12px;
+    position: relative
+}
+
+.inputbox input {
+    border: 2px solid #eee;
+    padding: 0 10px
+}
+
+.inputbox input:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: none;
+    outline: 0;
+    box-shadow: none;
+    border: 2px solid #0d6efd
+}
+
+.inputbox span{
+
+    font-size: 12px;
+}
+
+
+.inputbox a{
+
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.input-tag {
+    position: absolute;
+    top: 27px;
+    left: 7px;
+    width: 32px
+}
+
+.proceed button {
+ 
+    font-size: 15px
+}
+
+.form-check-label {
+    font-size: 12px
+}
+
+.btn-primary:focus {
+    color: #fff;
+    background-color: #6455BD;
+    border-color: #0257d5;
+    box-shadow: none
+}
+
+.form-check-input {
+    width: 16px;
+    height: 16px;
+    margin-top: 6px
+}

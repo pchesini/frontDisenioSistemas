@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        
+        <li class="nav-item ">
+          <a class="nav-link active" routerLink="/inicio">Home</a>
+        </li>
+        <!--le agrego la directiva ngIf con una variable boleana para que muestre una
+           de las dos opciones segun corresponda-->
+        <li *ngIf="!usuarioLogeado" class="nav-item">
+          <a class="nav-link" routerLink="/iniciar-sesion">Iniciar Sesion</a>
+        </li>
+        <li *ngIf="usuarioLogeado" class="nav-item">
+          <a class="nav-link"routerLink="/inicio">Cerrar Sesion</a>
+        </li>
+       
+         
+      </ul>
+    </div>
+  </nav>
