@@ -9,7 +9,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import {LoginComponent} from './auth/login/login.component';
 import { NavComponent } from './compartida/nav/nav.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { NuevoComponent } from './pages/nuevo/nuevo.component'
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http'
     DashboardComponent,
     LoginComponent,
     NavComponent,
+    NuevoComponent,
    
   ],
   imports: [

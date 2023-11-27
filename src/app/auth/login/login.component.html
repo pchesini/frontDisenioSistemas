@@ -1,4 +1,5 @@
-<form [formGroup]="formularioLogin">
+<div class="container d-flex justify-content-center">
+    <form [formGroup]="formularioLogin">
     <p class="text-danger">{{loginError}}</p>
     <div class="card">
         <div class="text-center mt-4 user-icon-container">
@@ -9,7 +10,7 @@
             <div class="inputbox">
                 <span><i class="fas fa-user"></i> Email:</span>
                 <input formControlName="email" type="email" name="  Email" class="form-control" required="required">
-
+                    <!--validaciones sobre el formulario -->
                 <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
                     <div *ngIf="email.errors?.['required']">El Email es Requerido.</div>
                     <div *ngIf="email.errors?.['email']">Debe Tener un formato valido.</div>
@@ -23,6 +24,7 @@
                     <a href="#">Olvidaste la contraseña?</a>
                 </div>
                 <input formControlName="password" type="password" name="CONTRASEÑA" class="form-control" required="required">
+                <!--validaciones sobre el formulario -->
                 <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
                     <div *ngIf="password.errors?.['required']">El Password es Requerido.</div>
                     
@@ -34,3 +36,4 @@
         </div>
     </div>
 </form>
+</div>
