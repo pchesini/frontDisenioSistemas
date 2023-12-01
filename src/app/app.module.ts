@@ -29,7 +29,7 @@ import { NuevoComponent } from './pages/nuevo/nuevo.component'
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    //FontAwesomeModule
+    //FontAwesomeModule,
     
     
   ],

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/auth/login.service';
-import { loginRequest } from 'src/app/services/auth/loginRequest';
+import { LoginRequest } from 'src/app/services/auth/LoginRequest';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -26,9 +26,10 @@ export class LoginComponent implements OnInit{
     return this.formularioLogin.controls.password;
    }
 
+   // aca el login se siscrive al loginService que es el obervable(actualiza los cambios que vienen del back)
   login(){
     if(this.formularioLogin.valid){
-      this.loginService.login(this.formularioLogin.value as loginRequest).subscribe({
+      this.loginService.login(this.formularioLogin.value as LoginRequest).subscribe({
         next : (datosUsuario) =>{
           console.log(datosUsuario);
         },
@@ -38,6 +39,7 @@ export class LoginComponent implements OnInit{
         },
         complete: ()=>{
           console.log("login Completo");
+         // aca deberia ir la ruta de inicio
           this.router.navigateByUrl('/inicio');
           this.formularioLogin.reset();
         }
