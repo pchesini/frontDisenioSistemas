@@ -40,4 +40,10 @@ export class LoginService {
    get userLoginOn():Observable<boolean>{
     return this.currentUserLoginOn.asObservable();
    }
+   // cerrar sesion
+   logout(): void {
+    // Realiza las acciones necesarias para cerrar la sesión.
+    this.currentUserData.next({ id: 0, nombre: '', apellido: '' });
+    this.currentUserLoginOn.next(false);
+  }
 }

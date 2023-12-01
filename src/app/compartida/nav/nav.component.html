@@ -15,7 +15,7 @@
           <a class="nav-link" routerLink="/iniciar-sesion">Iniciar Sesion</a>
         </li>
         <li *ngIf="usuarioLogeado" class="nav-item">
-          <a class="nav-link"routerLink="/inicio">Cerrar Sesion</a>
+          <a (click)="logout()" class="nav-link"routerLink="/cerrar">Cerrar Sesion</a>
         </li>
        
          

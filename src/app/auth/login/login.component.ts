@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit{
     return this.formularioLogin.controls.password;
    }
 
-   // aca el login se siscrive al loginService que es el obervable(actualiza los cambios que vienen del back)
+   // aca el login se suscribe al loginService que es el obervable(actualiza los cambios que vienen del back)
   login(){
     if(this.formularioLogin.valid){
       this.loginService.login(this.formularioLogin.value as LoginRequest).subscribe({
