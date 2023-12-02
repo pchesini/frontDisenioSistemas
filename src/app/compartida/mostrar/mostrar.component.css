@@ -76,6 +76,11 @@
     align-items: center;
     justify-content: space-between;
   }
+
+  .collapse {
+    width: 1262px;
+    
+  }
   
   p {
     padding-left: 15px;

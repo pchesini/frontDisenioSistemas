@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container container-fluid">
     <nav>
       <div class="nav-izquierda container">
         <button class="btn btn-atras"><i class="bi bi-arrow-return-left"></i></button>
@@ -19,17 +19,21 @@
 
     <div class="bodyPart">
         <h1>Reunión científica nacional con referato</h1>
-        <button class="btn btn-agregar">+ Agregar</button>
+        <button class="btn btn-agregar" (click)="agregarReunion()">+ Agregar</button>
         
-        <div class="reuniones">
+        <div class="reuniones container">
           
-          <div class="reuniones row">
-            <div class="reunion col-md-12">
+          <div class="reuniones row container">
+            <div class="reunion scol-md-12 ">
                 <p>Reunion Cientifica 1</p>
                 <div class="btn-funciones d-flex">
-                    <button class="btn btn-f d-flex justify-content-center align-items-center"><i class="bi bi-eye"></i></button>
-                    <button class="btn btn-f d-flex justify-content-center align-items-center"><i class="bi bi-pencil"></i></button>
-                    <button class="btn btn-f d-flex justify-content-center align-items-center"><i class="bi bi-trash"></i></button>
+                    <!--boton ver-->
+                  <button class="btn btn-f d-flex justify-content-center align-items-center " type="button"><i class="bi bi-eye"></i></button>
+                  
+                    <!--boton modificar-->
+                  <button class="btn btn-f d-flex justify-content-center align-items-center"><i class="bi bi-pencil"></i></button>
+                    <!--boton eliminar-->
+                  <button class="btn btn-f d-flex justify-content-center align-items-center"><i class="bi bi-trash"></i></button>
                 </div>
             </div>
        

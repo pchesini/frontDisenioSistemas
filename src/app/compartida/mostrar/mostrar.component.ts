@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./mostrar.component.css']
 })
 export class MostrarComponent {
-  
+    agregarReunion(){
+      //this.router.navigate(['/componenteJero']);
+    }
 }
+
+
