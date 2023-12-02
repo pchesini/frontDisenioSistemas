@@ -1,0 +1,74 @@
+<div class="container-fluid">
+    <nav>
+      <div class="nav-izquierda">
+        <button class="btn btn-atras"><i class="bi bi-arrow-return-left"></i></button>
+        
+       
+      </div>
+      <div class="nav-derecha">
+        <button class="btn btn-usuario">
+          <i class="bi bi-person-fill"></i>
+        </button>
+        <button class="btn btn-salir">
+          Salir
+        </button>
+      </div>
+    </nav>
+
+    <div class="bodyPart">
+        <h1>Nueva</h1>
+        <h2>Reunión Científica Nacional</h2>
+         <!-- Formulario -->
+           <!-- implementar formularios de angular -->
+        <form>
+          <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="ciudad">Ciudad</label>
+            <input type="text" id="ciudad" name="ciudad" required>
+
+            <label for="expositor">Expositor</label>
+            <input type="text" id="expositor" name="expositor" required>
+
+            <label for="titulo">Título del Trabajo</label>
+            <input type="text" id="titulo" name="titulo" required>
+
+            <label for="autores">Autores:</label>
+            <div class="additional-authors">
+              <label for="author">Autor </label>
+              <input type="text" id="author" name="author">
+
+              <!-- Botón para agregar más autores -->
+              <button type="button" class="add-author-btn" onclick="addAuthorField()">Agregar Autor</button>
+              
+              <!-- Botón para eliminar la última casilla de autor -->
+              <button type="button" class="remove-author-btn" onclick="removeAuthorField()">Eliminar Autor</button>
+
+            </div>
+
+
+            <label for="fecha">Fecha</label>
+            <input type="date" id="fecha" name="fecha" required>
+
+            <!-- Botones de enviar y cancelar -->
+            <div style="display: flex; justify-content: space-between; width: 100%;">
+              <button type="button" class="cancel-btn" onclick="cancelForm()">Cancelar</button>
+              <button type="submit" class="submit-btn" onclick="handleSubmit()">Enviar</button>
+            </div>
+        </form>
+      
+            <!--- Converti algunas funciones de jS a Ts, despues probarlas -->
+        <!-- reuniones: contiene cada reunion
+        <div class="reuniones">
+          
+          <div class="reunion">
+            <p>Reunion Cientifica 1</p>
+            <div class="bnt-funciones">
+              <button class="btn btn-f"><i class="bi bi-eye"></i></button>
+              <button class=" btn btn-f"><i class="bi bi-pencil"></i></button>
+              <button class=" btn btn-f"><i class="bi bi-trash"></i></button>
+            </div>
+          </div>-->
+
+        </div>
+    </div>
