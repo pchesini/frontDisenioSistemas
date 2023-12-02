@@ -1,0 +1,63 @@
+.MiContenedor{ 
+    margin: 0;
+    padding: 1px;
+}
+
+#imagen-container {
+    text-align: center; /* Centrar la imagen */
+    margin-top: 0px; /* Espaciado superior de la imagen */
+}
+
+#mi-imagen {
+    max-width: 100%; /* Asegurar que la imagen no exceda su contenedor */
+    max-height: 370px; 
+}
+
+#rectangulo {
+    background-color: #B3B5F8; /* Color de fondo del rectángulo */
+    border-top-right-radius: 20px; /* Bordes redondeados */
+    border-bottom-right-radius: 20px;
+    padding: 10px; /* Espaciado interno */
+    margin-top: 1px; /* Espaciado superior */
+    margin-right: 1px;
+    width: 450px; 
+    overflow-y: auto; /* Barra de desplazamiento vertical si es necesario */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el rectángulo */
+    transition: background-color 0.3s; /* Añade una transición suave al cambio de color */
+}
+#rectangulo p {
+    font-size: 28px; /* Tamaño de fuente ajustado */
+}
+
+#rectangulo:hover {
+    background-color: #8588F8; /* Cambia el color al pasar el mouse sobre el rectángulo */
+}
+
+.contenedor {
+    display: flex;
+    height: auto;
+    align-items: flex-start;
+}
+
+.cuadro {
+    display: block;
+    background-color: #CECDCF;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 3px;
+    max-width: 1010px;
+    margin-right: 390px;
+    height: auto;
+    overflow: auto;
+}
+.cuadro ul {
+    list-style-type: none; /* Elimina los estilos de la lista desordenada */
+    padding: 0; /* Elimina el relleno predeterminado de la lista */
+}
+
+.cuadro li {
+    margin-bottom: 10px; /* Espacio entre elementos de la lista */
+    font-size: 20px;
+}
+
+
