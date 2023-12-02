@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <nav>
-      <div class="nav-izquierda">
+      <div class="nav-izquierda container">
         <button class="btn btn-atras"><i class="bi bi-arrow-return-left"></i></button>
         <div class="search-bg">
           <input type="search" class="busqueda" placeholder="busqueda"><i class="bi bi-search"></i>
@@ -20,18 +20,19 @@
     <div class="bodyPart">
         <h1>Reunión científica nacional con referato</h1>
         <button class="btn btn-agregar">+ Agregar</button>
-        <!-- reuniones: contiene cada reunion-->
+        
         <div class="reuniones">
           
-          <div class="reunion">
-            <p>Reunion Cientifica 1</p>
-            <div class="bnt-funciones">
-              <button class="btn btn-f"><i class="bi bi-eye"></i></button>
-              <button class=" btn btn-f"><i class="bi bi-pencil"></i></button>
-              <button class=" btn btn-f"><i class="bi bi-trash"></i></button>
+          <div class="reuniones row">
+            <div class="reunion col-md-12">
+                <p>Reunion Cientifica 1</p>
+                <div class="btn-funciones d-flex">
+                    <button class="btn btn-f d-flex justify-content-center align-items-center"><i class="bi bi-eye"></i></button>
+                    <button class="btn btn-f d-flex justify-content-center align-items-center"><i class="bi bi-pencil"></i></button>
+                    <button class="btn btn-f d-flex justify-content-center align-items-center"><i class="bi bi-trash"></i></button>
+                </div>
             </div>
-          </div>
-
+       
         </div>
     </div>
-  </div>
+</div>
