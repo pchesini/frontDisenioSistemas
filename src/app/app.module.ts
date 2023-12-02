@@ -10,7 +10,9 @@ import {LoginComponent} from './auth/login/login.component';
 import { NavComponent } from './compartida/nav/nav.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { NuevoComponent } from './pages/nuevo/nuevo.component'
+//import { NuevoComponent } from './pages/nuevo/nuevo.component'
+import { NuevaRnComponent } from './pages/nueva-rn/nueva-rn.component'
+import { MostrarComponent } from './pages/mostrar/mostrar.component'
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { NuevoComponent } from './pages/nuevo/nuevo.component'
     DashboardComponent,
     LoginComponent,
     NavComponent,
-    NuevoComponent,
+    //NuevoComponent,
+    NuevaRnComponent,
+    MostrarComponent,
    
   ],
   imports: [

@@ -1,0 +1,96 @@
+.bodyPart {
+    margin-left: 10px;
+  }
+  
+  .reuniones {
+    width: 1262px;
+    margin-top: 25px;
+  
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .reunion {
+    width: 1262px;
+    height: 60px;
+  
+    background-color: white;
+  
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  p {
+    padding-left: 15px;
+  }
+  
+  
+  /* -- SECCION DE BOTONES -- */
+  .btn {
+    width: 53px;
+    height: 49px;
+    border-radius: 5px;
+    box-shadow: 5px 4px 4px #292D32;
+    margin: 10px;
+  
+    transition: transform 0.3s ease;
+  }
+  
+  .btn-atras {
+    width: 50px;
+    height: 46px;
+  }
+  
+  .btn-agregar {
+    width: 120px;
+    height: 40px;
+  
+    background-color: #DAD6E0;
+    border-radius: 20px;
+    border-color: #6750A4;
+    box-shadow: none;
+  
+    color: #6750A4;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  
+  
+  .bnt-funciones {
+    padding-right: 15px;
+    
+  }
+  
+  .btn-f {
+    width: 40px;
+    height:40px;
+    margin: 3px;
+  
+    border-radius: 10px;
+    border: 2px solid #E8DEF8;
+  
+    background-color: #E8DEF8;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  i {
+    font-size: 1.4rem;
+  }
+  
+  .bi-person-fill {
+    font-size: 1.5rem;
+  }
+  
+  .btn:hover {
+    /* Escala el botón a un 95% de su tamaño original cuando se pasa el mouse por encima */
+    transform: scale(0.95);
+  
+    cursor: pointer;
+  }
+  
+  .btn:active {
+    /* Escala el botón a un 90% de su tamaño original cuando se hace clic en él */
+    transform: scale(0.90);
+  }
