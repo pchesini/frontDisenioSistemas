@@ -1,0 +1,257 @@
+.container-fluid {
+    max-width: 1440px;
+    height: 1124px;
+    background-color: #EAE8E8;
+  }
+  
+  /* -- TITULO -- */
+  h1{color: #000;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Inter;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;}
+  h2 {
+    margin: 0;
+    font-weight: bold;
+    text-align: center; /* Centramos el texto horizontalmente */
+    color: #000;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Inter;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px; /* 45% */
+    letter-spacing: 0.25px;
+  }
+  
+  /* -- BARRA DE NAVEGACION -- */
+  nav {
+    max-width: 1440px;
+    height: 80px;
+    background-color: #6455BD;
+  
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .nav-izquierda {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-bg {
+    width: 250px;
+    height: 44px;
+    margin-left: 10px;
+    border-radius: 15px;
+    background-color: #504499;
+  
+    display: flex;
+    align-items: center;
+  }
+  
+  .busqueda {
+    width: 218px;
+    height: 35px;
+    border-radius: 15px;
+  }
+  
+  input[type="search"] {
+    padding-left: 10px;
+  }
+  
+  .bi-search {
+    padding-left: 5px;
+  }
+  
+  .nav-derecha {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* -- CUERPO DE LA PAGINA -- */
+  
+  .bodyPart {
+    margin-left: 10px;
+  }
+  
+  .reuniones {
+    width: 1262px;
+    margin-top: 25px;
+  
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .reunion {
+    width: 1262px;
+    height: 60px;
+  
+    background-color: white;
+  
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  p {
+    padding-left: 15px;
+  }
+  
+  
+  /* -- SECCION DE BOTONES -- */
+  .btn {
+    width: 53px;
+    height: 49px;
+    border-radius: 5px;
+    box-shadow: 5px 4px 4px #292D32;
+    margin: 10px;
+  
+    transition: transform 0.3s ease;
+  }
+  
+  .btn-atras {
+    width: 50px;
+    height: 46px;
+  }
+  
+  
+  
+  
+  .bnt-funciones {
+    padding-right: 15px;
+    
+  }
+  
+  .btn-f {
+    width: 40px;
+    height:40px;
+    margin: 3px;
+  
+    border-radius: 10px;
+    border: 2px solid #E8DEF8;
+  
+    background-color: #E8DEF8;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  i {
+    font-size: 1.4rem;
+  }
+  
+  .bi-person-fill {
+    font-size: 1.5rem;
+  }
+  
+  .btn:hover {
+    /* Escala el botón a un 95% de su tamaño original cuando se pasa el mouse por encima */
+    transform: scale(0.95);
+  
+    cursor: pointer;
+  }
+  
+  .btn:active {
+    /* Escala el botón a un 90% de su tamaño original cuando se hace clic en él */
+    transform: scale(0.90);
+  }
+  
+  
+  /* -- SECCION DE Formulario -- */
+  .formulario {
+    width: 1262px;
+    height: 100%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 5px 4px 4px #292D32;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  form {
+    max-width: 500px; /* Ancho máximo del formulario */
+    margin: 20px auto; /* Centramos el formulario */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco transparente para el formulario */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Estilos de la casilla de entrada */
+  label {
+    margin-bottom: 5px;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  input, textarea, select {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    
+  }
+  
+  /* Estilos del botón de enviar */
+  button.submit-btn {
+    background-color: #3498db;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  /* Estilos del botón de cancelar */
+  button.cancel-btn {
+    background-color: #994944;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-family: 'Inter', sans-serif;
+        }
+  textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    resize: vertical; /* Permite redimensionar verticalmente */
+  }
+  
+  .additional-authors {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .additional-authors input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+  }
+  button.add-author-btn {
+    background-color: #27ae60;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-family: 'Inter', sans-serif;
+  }
+  

@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <div class="MiContenedor">
+    <div id="imagen-container">
+        <img id="mi-imagen" src="./assets/imagenes/Imagen1.jpg" alt="Descripción de la imagen">
+    </div>
+    
+    <div class="contenedor">
+        <div id="rectangulo" class="rectangulo" (click)="mostrarCuadro('cuadro2')">
+            <p>Trabajos presentados en congresos y reuniones científicas</p>
+        </div>
+        <div id="cuadro2" class="cuadro" *ngIf="cuadroVisible === 'cuadro2'">
+            <ul>
+                <li>Reunión científica nacional</li>
+                <li>Reunión científica internacional</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="contenedor">
+        <div id="rectangulo" class="rectangulo" (click)="mostrarCuadro('cuadro1')">
+            <p>Trabajos realizados y publicados</p>
+        </div>
+        <div id="cuadro1" class="cuadro" *ngIf="cuadroVisible === 'cuadro1'">
+            <ul>
+                <li>Trabajos publicados en revistas nacionales</li>
+                <li>Presentación de artículos en congresos</li>
+                <li>Libros o capítulos de libros</li>
+                <li>Eventos organizados</li>
+                <li>Artículos de divulgación, informes y memorias técnicas</li>
+                <li>Patentes desarrollos y certificados de aptitud técnica</li>
+                <li>Registro de propiedad</li>
+            </ul>
+        </div>
+        
+    </div>
+    </div>
+    </div>
+    
