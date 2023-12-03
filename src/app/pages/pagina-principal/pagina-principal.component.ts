@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/services/auth/Usuario';
 import { LoginService } from 'src/app/services/auth/login.service';
 
@@ -7,13 +7,26 @@ import { LoginService } from 'src/app/services/auth/login.service';
   templateUrl: './pagina-principal.component.html',
   styleUrls: ['./pagina-principal.component.css']
 })
-export class PaginaPrincipalComponent {
+export class PaginaPrincipalComponent implements OnInit, OnDestroy{
   cuadroVisible: string | null;  // Inicializar con null o algún otro valor inicial
-  //se agrego la funcionalidad de cerrar sesion
-  usuarioLogeado:boolean = false;
-userData?:Usuario;
+  //se agrego la funcionalidad de cerrar sesion pero no cambia el nombre por "salir"
+  usuarioLogeado:boolean = false;// true pero creo que deberia estar en true
+  userData?:Usuario;
   constructor(private loginService: LoginService) {
     this.cuadroVisible = null;
+  }
+  ngOnInit(): void {
+    this.loginService.currentUserLoginOn.subscribe({
+      next:(usuarioLogeado) =>{
+        this.usuarioLogeado=usuarioLogeado;
+      }
+    })
+    // esto se puede sacar
+    this.loginService.currentUserData.subscribe({
+      next:(userData) =>{
+        this.userData=userData;
+      }
+    })
   }
   mostrarCuadro(idCuadro: string) {
     console.log(`Mostrando cuadro: ${idCuadro}`);
