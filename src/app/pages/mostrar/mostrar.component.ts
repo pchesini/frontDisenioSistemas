@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./mostrar.component.css']
 })
 export class MostrarComponent {
+      ver(){
 
+      }
+
+      editar(){
+
+      }
+
+      eliminar(){
+        
+      }
 }

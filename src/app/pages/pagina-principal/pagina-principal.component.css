@@ -1,6 +1,7 @@
 .MiContenedor{ 
     margin: 0;
     padding: 1px;
+    height: 600px;
 }
 
 #imagen-container {
@@ -26,7 +27,8 @@
     transition: background-color 0.3s; /* Añade una transición suave al cambio de color */
 }
 #rectangulo p {
-    font-size: 28px; /* Tamaño de fuente ajustado */
+    font-size: 15px; /* Tamaño de fuente ajustado */
+    font-weight: 600;
 }
 
 #rectangulo:hover {

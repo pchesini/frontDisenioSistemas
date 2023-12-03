@@ -89,7 +89,7 @@
     border-radius: 5px;
     box-shadow: 5px 4px 4px #292D32;
     margin: 10px;
-  
+    background-color: #DAD6E0;
     transition: transform 0.3s ease;
   }
   
