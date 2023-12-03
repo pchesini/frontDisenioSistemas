@@ -28,6 +28,7 @@ export class PaginaPrincipalComponent implements OnInit, OnDestroy{
       }
     })
   }
+  
   mostrarCuadro(idCuadro: string) {
     console.log(`Mostrando cuadro: ${idCuadro}`);
     this.cuadroVisible = this.cuadroVisible === idCuadro ? null : idCuadro;
