@@ -1,21 +1,26 @@
-
-  <div class="container-fluid p-0">
-    <nav>
-      <div class="nav-izquierda">
-        <button class="btn btn-atras"><i class="bi bi-arrow-return-left"></i></button>
-        <div class="search-bg">
-          <input type="search" class="busqueda" placeholder="busqueda"><i class="bi bi-search"></i>
-        </div>
+<nav class="navbar navbar-expand-lg bg-secondary">
+  <div class="container-fluid">
+   
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+        <a *ngIf="userLoginOn" class="nav-link" routerLink="pagina-principal">Home</a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="userLoginOn" class="nav-link" routerLink="nueva-reunion"> <i class="fas fa-plus" style="color: green;"> </i> Reunion</a>
+          </li>
+        
+      </ul>
+      <div class="nav-derecha ms-auto"> 
+        <a *ngIf="userLoginOn" routerLink="perfil" class="btn btn-usuario">
+          <i class="bi bi-person-fill"></i></a>
+      
+        <a *ngIf="!userLoginOn" routerLink="/iniciar-sesion" class="btn btn-iniciar-sesion">Entrar</a>
+        <a *ngIf="userLoginOn" (click)="logout()" class="btn btn-salir">Salir</a>
       </div>
-      <div class="nav-derecha">
-        <!-- Agrega el ngIf para mostrar las opciones según el estado de inicio de sesión -->
-        <button *ngIf="usuarioLogeado" class="btn btn-usuario">
-          <i class="bi bi-person-fill"></i>
-        </button>
-        <button *ngIf="usuarioLogeado" (click)="logout()" class="btn btn-salir">
-          Salir
-        </button>
-        <a *ngIf="!usuarioLogeado" routerLink="/iniciar-sesion" class="btn btn-iniciar-sesion">Entrar</a>
-      </div>
-    </nav>
+    </div>
   </div>
+</nav>

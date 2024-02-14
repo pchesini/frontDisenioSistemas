@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Usuario } from 'src/app/services/auth/Usuario';
+import { Usuario } from  '../../interfaces/Usuario';
 import { LoginService } from 'src/app/services/auth/login.service';
 
 @Component({
@@ -8,20 +8,14 @@ import { LoginService } from 'src/app/services/auth/login.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit, OnDestroy {
-  usuarioLogeado:boolean = false;
+  userLoginOn:boolean = false;
   userData?:Usuario;
   constructor(private loginService: LoginService){}
-  
-  ngOnDestroy(): void {
-    this.loginService.currentUserData.unsubscribe();
-    this.loginService.currentUserLoginOn.unsubscribe();
-  }
-;
 
   ngOnInit(): void{
     this.loginService.currentUserLoginOn.subscribe({
-      next:(usuarioLogeado) =>{
-        this.usuarioLogeado=usuarioLogeado;
+      next:(userLoginOn) =>{
+        this.userLoginOn=userLoginOn;
       }
     })
     this.loginService.currentUserData.subscribe({
@@ -30,6 +24,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
       }
     })
   }
+  ngOnDestroy(): void {
+    this.loginService.currentUserData.unsubscribe();
+    this.loginService.currentUserLoginOn.unsubscribe();
+  }
+;
 
 
 }

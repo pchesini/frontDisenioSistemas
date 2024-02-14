@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/auth/login.service';
-import { LoginRequest } from 'src/app/services/auth/LoginRequest';
+import { LoginRequest } from 'src/app/interfaces/LoginRequest';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,15 +10,17 @@ import { LoginRequest } from 'src/app/services/auth/LoginRequest';
 })
 export class LoginComponent implements OnInit{
   loginError:string="";
+  // se crea un objeto formulario con las validaciones
   formularioLogin=this.formbuilder.group({
     email:['pablo@mail',[Validators.required, Validators.email]],
-    password:['1234',[Validators.required]]
+    password:['1234',[Validators.required,]]
   })
+  // en el constructor se agrega el componente de rutas
   constructor(private formbuilder:FormBuilder, private router:Router, private loginService:LoginService){}
   ngOnInit(): void {
       
   }
-  // funcion para terornar el email para usar en las validaciones del formulario
+  // funcion para rerornar el email para usar en las validaciones del formulario
    get email(){
     return this.formularioLogin.controls.email;
    }
@@ -39,8 +41,7 @@ export class LoginComponent implements OnInit{
         },
         complete: ()=>{
           console.log("login Completo");
-         // aca deberia ir la ruta de inicio
-          this.router.navigateByUrl('/inicio');
+          this.router.navigateByUrl('/pagina-principal');
           this.formularioLogin.reset();
         }
       });
@@ -48,7 +49,7 @@ export class LoginComponent implements OnInit{
     }
     else{
       this.formularioLogin.markAllAsTouched();
-     alert("error al iniaciar sesion");
+     alert("error al iniciar sesion");
     }
 
   }

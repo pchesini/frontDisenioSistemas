@@ -1,6 +1,7 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { PerfilComponent } from './pages/perfil/perfil.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './compartida/header/header.component';
@@ -10,10 +11,9 @@ import {LoginComponent} from './auth/login/login.component';
 import { NavComponent } from './compartida/nav/nav.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-//import { NuevoComponent } from './pages/nuevo/nuevo.component'
 import { NuevaRnComponent } from './pages/nueva-rn/nueva-rn.component'
 import { MostrarComponent } from './pages/mostrar/mostrar.component'
-
+import { PaginaPrincipalComponent } from './pages/pagina-principal/pagina-principal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,17 +22,18 @@ import { MostrarComponent } from './pages/mostrar/mostrar.component'
     DashboardComponent,
     LoginComponent,
     NavComponent,
-    //NuevoComponent,
     NuevaRnComponent,
     MostrarComponent,
-   
+    PerfilComponent,
+    PaginaPrincipalComponent,
   ],
   imports: [
-    
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    //NgModule,
     //FontAwesomeModule,
     
     
