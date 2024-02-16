@@ -6,6 +6,8 @@ import { PaginaPrincipalComponent } from './pages/pagina-principal/pagina-princi
 import { NuevaRnComponent }from './pages/nueva-rn/nueva-rn.component';
 import { MostrarComponent }from './pages/mostrar/mostrar.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
+import { RcNacionalComponent } from './rc-nacional/rc-nacional.component';
+import { RcInternacionalComponent } from './rc-internacional/rc-internacional.component';
 //le agrego las rutas
 const routes: Routes = [
   {path:'',redirectTo:'/inicio', pathMatch:'full'},
@@ -15,7 +17,8 @@ const routes: Routes = [
   {path:'nueva-reunion',component:NuevaRnComponent},
   {path:'mostrar',component:MostrarComponent},
   {path:'perfil',component:PerfilComponent},
-
+  {path: 'rcn', component:RcNacionalComponent},
+  {path:'rci', component:RcInternacionalComponent}
 ];
   
 

@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NuevaRnComponent } from './pages/nueva-rn/nueva-rn.component'
 import { MostrarComponent } from './pages/mostrar/mostrar.component'
 import { PaginaPrincipalComponent } from './pages/pagina-principal/pagina-principal.component';
+import { RcNacionalComponent } from './rc-nacional/rc-nacional.component';
+import { RcInternacionalComponent } from './rc-internacional/rc-internacional.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +28,8 @@ import { PaginaPrincipalComponent } from './pages/pagina-principal/pagina-princi
     MostrarComponent,
     PerfilComponent,
     PaginaPrincipalComponent,
+    RcNacionalComponent,
+    RcInternacionalComponent,
   ],
   imports: [
     CommonModule,
