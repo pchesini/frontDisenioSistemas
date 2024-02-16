@@ -16,8 +16,8 @@ export class RciService {
   constructor(private http: HttpClient) { }
 
   //Obtener todas las reuniones cientificas internacionales (rci)
- getAllRci():Observable<RcInternacionalComponent[]> {
-    return this.http.get<RcInternacionalComponent[]>(this.url);
+ getAllRci():Observable<RciComponent[]> {
+    return this.http.get<RciComponent[]>(this.url);
   }
 
   //crear rci
