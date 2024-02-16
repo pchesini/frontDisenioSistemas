@@ -18,7 +18,8 @@ const routes: Routes = [
   {path:'mostrar',component:MostrarComponent},
   {path:'perfil',component:PerfilComponent},
   {path: 'rcn', component:RcNacionalComponent},
-  {path:'rci', component:RcInternacionalComponent}
+  {path:'rci', component:RcInternacionalComponent},
+  {path:'rci/:id', component:RcInternacionalComponent}
 ];
   
 

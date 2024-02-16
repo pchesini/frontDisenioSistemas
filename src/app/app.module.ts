@@ -16,6 +16,7 @@ import { MostrarComponent } from './pages/mostrar/mostrar.component'
 import { PaginaPrincipalComponent } from './pages/pagina-principal/pagina-principal.component';
 import { RcNacionalComponent } from './rc-nacional/rc-nacional.component';
 import { RcInternacionalComponent } from './rc-internacional/rc-internacional.component';
+import { RciComponent } from './rci/rci.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { RcInternacionalComponent } from './rc-internacional/rc-internacional.co
     PaginaPrincipalComponent,
     RcNacionalComponent,
     RcInternacionalComponent,
+    RciComponent,
   ],
   imports: [
     CommonModule,
