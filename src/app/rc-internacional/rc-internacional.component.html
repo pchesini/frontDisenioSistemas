@@ -1,5 +1,11 @@
 
 <h1 class="mt-3 mb-3">Reunión Científica Internacional</h1>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Nuevo
+  </button>
+
 <table class="table table-responsive table-hover table-secondary">
     <thead class="table-dark">
         <tr>
@@ -9,46 +15,96 @@
             <th>Expositor</th>
             <th>Título trabajo</th>
             <th>Autor</th>
-            <th>Acciones</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+            
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>Reunión TTT</td>
-            <td>Argentina</td>
-            <td>02/02/2024</td>
-            <td>prof. Carla Perez</td>
-            <td>"Energía eólica"</td>
-            <td> lic. José Paez</td>
-            <td>
-                <i class="bi bi-pencil-square mx-3"></i>
-                <i class="bi bi-trash3"></i>
-            </td>
+       <tr *ngFor="let rci of rciList">
+            <td>{{rci.reunion}}</td>
+            <td>{{rci.pais}}</td>
+            <td>{{rci.fechaInicio}}</td>
+            <td>{{rci.expositor}}</td>
+            <td>{{rci.tituloTrabajo}}</td>
+            <td>{{rci.autor}}</td>
+            <td class="text-center"><i class="bi bi-pencil-square" [routerLink]="['/rci', rci.id]" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i></td>
+            <td class="text-center"><i class="bi bi-trash3"></i></td>
         </tr>
-        <tr>
-            <td>Reunión LLL</td>
-            <td>España</td>
-            <td>15/01/2024</td>
-            <td>prof. Julian González</td>
-            <td>"Física cuántica"</td>
-            <td>doc. Emilia Benitez</td>
-            <td>
-                <i class="bi bi-pencil-square mx-3"></i>
-                <i class="bi bi-trash3"></i>
-            </td>
-        </tr>
-        <tr>
-            <td>Reunión SSS</td>
-            <td>Chile</td>
-            <td>19/01/2024</td>
-            <td>prof. Helena Suarez</td>
-            <td>"Planeamiento urbano"</td>
-            <td>prof. Antonio Rodriguez</td>
-            <td>
-                <i class="bi bi-pencil-square mx-3"></i>
-                <i class="bi bi-trash3"></i>
-            </td>
-        </tr>
+        
     </tbody>
 </table>
 
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Nueva reunión científica internacional</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="formRci" (submit)="onSubmit()" id="formRci">  
+
+            <div class="mb-3">
+              <label for="reunion" class="form-label">Reunion</label>
+              <input type="text" formControlName="reunion" placeholder="Ingrese la reunión" class="form-control"  id="reunion">
+
+              <div class="alert alert-danger" *ngIf="formRci.controls['reunion'].invalid && formRci.controls['reunion'].touched">
+                <div *ngIf="formRci.controls['reunion']?.hasError('required')">El nombre de la reunión es requerida</div>
+             </div>
+
+            </div>
+            
+            <div class="mb-3">
+                <label for="pais" class="form-label">Pais</label>
+                <input type="text" formControlName="pais" placeholder="Ingrese un pais" class="form-control" id="pais">
+                <div class="alert alert-danger" *ngIf="formRci.controls['pais'].invalid && formRci.controls['pais'].touched">
+                    <div *ngIf="formRci.controls['pais']?.hasError('required')">El pais es requerido</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="fecha" class="form-label">Fecha inicio</label>
+                <input type="fecha" class="form-control" id="fecha">
+            </div>
+
+            
+            <div class="mb-3">
+                <label for="expositor" class="form-label">Expositor</label>
+                <input type="text" formControlName="expositor" placeholder="Ingrese el expositor" class="form-control" id="expositor">
+                <div class="alert alert-danger" *ngIf="formRci.controls['expositor'].invalid && formRci.controls['expositor'].touched">
+                    <div *ngIf="formRci.controls['expositor']?.hasError('required')">El nombre del expositor es requerido</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="tituloTrabajo" class="form-label">Titulo Trabajo</label>
+                <input type="text" formControlName="tituloTrabajo" placeholder="Ingrese el titulo" class="form-control" id="tituloTrabajo">
+                <div class="alert alert-danger" *ngIf="formRci.controls['tituloTrabajo'].invalid && formRci.controls['tituloTrabajo'].touched">
+                    <div *ngIf="formRci.controls['tituloTrabajo']?.hasError('required')">El titulo es requerido</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="autor" class="form-label"></label>
+            </div>
+            <div class="mb-3">
+                <label for="autor" class="form-label">Autor</label>
+                <input type="text" formControlName="autor" placeholder="Ingrese el autor" class="form-control" id="autor">
+                <div class="alert alert-danger" *ngIf="formRci.controls['autor'].invalid && formRci.controls['autor'].touched">
+                    <div *ngIf="formRci.controls['autor']?.hasError('required')">El autor es requerido</div>
+                </div>
+            </div>
+
+          </form>..
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button role="button" form="formRci" class="btn btn-primary">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>

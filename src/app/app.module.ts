@@ -16,7 +16,8 @@ import { MostrarComponent } from './pages/mostrar/mostrar.component'
 import { PaginaPrincipalComponent } from './pages/pagina-principal/pagina-principal.component';
 import { RcNacionalComponent } from './rc-nacional/rc-nacional.component';
 import { RcInternacionalComponent } from './rc-internacional/rc-internacional.component';
-import { RciComponent } from './rci/rci.component';
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,8 +31,7 @@ import { RciComponent } from './rci/rci.component';
     PerfilComponent,
     PaginaPrincipalComponent,
     RcNacionalComponent,
-    RcInternacionalComponent,
-    RciComponent,
+    RcInternacionalComponent
   ],
   imports: [
     CommonModule,
@@ -41,8 +41,7 @@ import { RciComponent } from './rci/rci.component';
     HttpClientModule,
     //NgModule,
     //FontAwesomeModule,
-    
-    
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
