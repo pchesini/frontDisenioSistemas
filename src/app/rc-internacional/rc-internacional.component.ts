@@ -84,8 +84,8 @@ export class RcInternacionalComponent implements OnInit{
   cargar():void{
     this.activated.params.subscribe(
       e=>{
-        let id=e['id']; //acá está el id del enlace
-       // let idNumber = parseInt(id, 10);
+        let idString=e['id']; //acá está el id del enlace
+       let id = parseInt(idString, 10);
         if(id){
           this.rciService.get(id).subscribe(
             r=> this.rci = r
@@ -95,4 +95,30 @@ export class RcInternacionalComponent implements OnInit{
       }
     )
   }
+  
+
+  ///eliminar una rci
+delete(rci: Rci): void {
+  if (rci && rci.id) { // Comprobar si rci y rci.id están definidos y no son nulos
+    console.log("deleted");
+    this.rciService.eliminar(rci.id).subscribe(
+      () => {
+        // Después de eliminar la rci, actualiza la lista de rci
+        this.rciService.getAllRci().subscribe(
+          (response: Rci[]) => {
+            this.rciList = response; // Actualiza la lista de rcis
+          },
+          (error) => {
+            console.error("Error al obtener la lista de rcis después de eliminar:", error);
+          }
+        );
+      },
+      (error) => {
+        console.error("Error al eliminar la rci:", error);
+      }
+    );
+  } else {
+    console.error("No se puede eliminar la rci porque no tiene un ID definido.");
+  }
+}
 }

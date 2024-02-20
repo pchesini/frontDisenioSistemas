@@ -29,9 +29,8 @@
             <td>{{rci.tituloTrabajo}}</td>
             <td>{{rci.autor}}</td>
             <td class="text-center"><i class="bi bi-pencil-square" [routerLink]="['/rci', rci.id]" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i></td>
-            <td class="text-center"><i class="bi bi-trash3"></i></td>
+            <td class="text-center"><i class="bi bi-trash3" (click)="delete(rci)"></i></td>
         </tr>
-        
     </tbody>
 </table>
 
