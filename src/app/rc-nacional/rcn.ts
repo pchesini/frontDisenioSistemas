@@ -1,16 +1,16 @@
-export class Rci {
-    id?: string;
+export class Rcn {
+    id?: number;
     reunion: string;
-    pais: string;
+    ciudad: string;
     fechaInicio: string;
     expositor: string;
     tituloTrabajo: string;
     autor: string;
   
-    constructor(id: string, reunion: string, pais: string, fechaInicio: string, expositor: string, tituloTrabajo: string, autor: string) {
+    constructor(id: number, reunion: string, ciudad: string, fechaInicio: string, expositor: string, tituloTrabajo: string, autor: string) {
       this.id = id;
       this.reunion = reunion;
-      this.pais = pais;
+      this.ciudad = ciudad;
       this.fechaInicio = fechaInicio;
       this.expositor = expositor;
       this.tituloTrabajo = tituloTrabajo;

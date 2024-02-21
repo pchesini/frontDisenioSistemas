@@ -1,53 +1,108 @@
-<h1 class="mb-3 mt-3">Reunión Científica Nacional</h1>
+<h1 class="mt-3 mb-3">Reunión Científica Internacional</h1>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Nuevo
+  </button>
 
 <table class="table table-responsive table-hover table-secondary">
-    <thead  class="table-dark">
+    <thead class="table-dark">
         <tr>
-            <th>Reunion PPP</th>
+            <th>Reunion</th>
             <th>Ciudad</th>
             <th>Fecha inicio</th>
             <th>Expositor</th>
             <th>Título trabajo</th>
             <th>Autor</th>
-            <th>Acciones</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+            
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>Reunión KKK</td>
-            <td>La Plata</td>
-            <td>02/02/2024</td>
-            <td>prof. Carlos Perez</td>
-            <td>"Energía eólica"</td>
-            <td> lic. Ana Laura Paz</td>
-            <td>
-                <i class="bi bi-pencil-square mx-3"></i>
-                <i class="bi bi-trash3"></i>
-            </td>
-        </tr>
-        <tr>
-            <td>Reunión VVV</td>
-            <td>Mar del Plata</td>
-            <td>15/01/2024</td>
-            <td>prof. Julia González</td>
-            <td>"Física cuántica"</td>
-            <td>doc. Eduardo Benitez</td>
-            <td>
-                <i class="bi bi-pencil-square mx-3"></i>
-                <i class="bi bi-trash3"></i>
-            </td>
-        </tr>
-        <tr>
-            <td>Reunión MMM</td>
-            <td>Mendoza</td>
-            <td>19/01/2024</td>
-            <td>prof. Helena Suarez</td>
-            <td>"Planeamiento urbano"</td>
-            <td>prof. Antonia Rodriguez</td>
-            <td>
-                <i class="bi bi-pencil-square mx-3"></i>
-                <i class="bi bi-trash3"></i>
-            </td>
+       <tr *ngFor="let rcn of rcnList">
+            <td>{{rcn.reunion}}</td>
+            <td>{{rcn.ciudad}}</td>
+            <td>{{rcn.fechaInicio}}</td>
+            <td>{{rcn.expositor}}</td>
+            <td>{{rcn.tituloTrabajo}}</td>
+            <td>{{rcn.autor}}</td>
+            <td class="text-center"><i class="bi bi-pencil-square" [routerLink]="['/rci', rcn.id]" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i></td>
+            <td class="text-center"><i class="bi bi-trash3" (click)="delete(rcn)"></i></td>
         </tr>
     </tbody>
 </table>
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Nueva reunión científica internacional</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="formRcn" (submit)="onSubmit()" id="formRcn">  
+
+            <div class="mb-3">
+              <label for="reunion" class="form-label">Reunion</label>
+              <input type="text" formControlName="reunion" placeholder="Ingrese la reunión" class="form-control"  id="reunion">
+
+              <div class="alert alert-danger" *ngIf="formRcn.controls['reunion'].invalid && formRcn.controls['reunion'].touched">
+                <div *ngIf="formRcn.controls['reunion']?.hasError('required')">El nombre de la reunión es requerida</div>
+             </div>
+
+            </div>
+            
+            <div class="mb-3">
+                <label for="ciudad" class="form-label">Ciudad</label>
+                <input type="text" formControlName="ciudad" placeholder="Ingrese una ciudad" class="form-control" id="ciudad">
+                <div class="alert alert-danger" *ngIf="formRcn.controls['pais'].invalid && formRcn.controls['pais'].touched">
+                    <div *ngIf="formRcn.controls['ciudad']?.hasError('required')">La ciudad es requerido</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="fecha" class="form-label">Fecha inicio</label>
+                <input type="fecha" class="form-control" id="fecha">
+            </div>
+
+            
+            <div class="mb-3">
+                <label for="expositor" class="form-label">Expositor</label>
+                <input type="text" formControlName="expositor" placeholder="Ingrese el expositor" class="form-control" id="expositor">
+                <div class="alert alert-danger" *ngIf="formRcn.controls['expositor'].invalid && formRcn.controls['expositor'].touched">
+                    <div *ngIf="formRcn.controls['expositor']?.hasError('required')">El nombre del expositor es requerido</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="tituloTrabajo" class="form-label">Titulo Trabajo</label>
+                <input type="text" formControlName="tituloTrabajo" placeholder="Ingrese el titulo" class="form-control" id="tituloTrabajo">
+                <div class="alert alert-danger" *ngIf="formRcn.controls['tituloTrabajo'].invalid && formRcn.controls['tituloTrabajo'].touched">
+                    <div *ngIf="formRcn.controls['tituloTrabajo']?.hasError('required')">El titulo es requerido</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="autor" class="form-label"></label>
+            </div>
+            <div class="mb-3">
+                <label for="autor" class="form-label">Autor</label>
+                <input type="text" formControlName="autor" placeholder="Ingrese el autor" class="form-control" id="autor">
+                <div class="alert alert-danger" *ngIf="formRcn.controls['autor'].invalid && formRcn.controls['autor'].touched">
+                    <div *ngIf="formRcn.controls['autor']?.hasError('required')">El autor es requerido</div>
+                </div>
+            </div>
+
+          </form>..
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button role="button" form="formRci" class="btn btn-primary">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -26,17 +26,19 @@ export class RciService {
   }
 
   //Obtener un rci
-  get(id:number):Observable<Rci> {
+  get(id:string):Observable<Rci> {
     return this.http.get<Rci>(this.url+'/'+id);
   }
 
   //actualizar rci
   actualizarRci(rci: Rci):Observable<Rci>{
-    return this.http.put<Rci>(this.url, rci);
+    const url = `${this.url}/${rci.id}`; 
+    console.log("url a actualizar:", url, rci)
+    return this.http.put<Rci>(url, rci);
   }
 
   //eliminar rci
-  eliminar(id:number):Observable<Rci> {
+  eliminar(id:string):Observable<Rci> {
     return this.http.delete<Rci>(this.url+'/'+id);
   }
 
