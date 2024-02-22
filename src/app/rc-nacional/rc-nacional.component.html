@@ -27,8 +27,12 @@
             <td>{{rcn.expositor}}</td>
             <td>{{rcn.tituloTrabajo}}</td>
             <td>{{rcn.autor}}</td>
-            <td class="text-center"><i class="bi bi-pencil-square" [routerLink]="['/rci', rcn.id]" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i></td>
-            <td class="text-center"><i class="bi bi-trash3" (click)="delete(rcn)"></i></td>
+            <td class="text-center">
+              <i class="bi bi-pencil-square" [routerLink]="['/rci', rcn.id]" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i>
+            </td>
+            <td class="text-center">
+              <i class="bi bi-trash3" (click)="delete(rcn)"></i>
+            </td>
         </tr>
     </tbody>
 </table>

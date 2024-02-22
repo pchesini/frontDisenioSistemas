@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { RcInternacionalComponent } from '../rc-internacional/rc-internacional.component';
 import { Rci } from '../rc-internacional/rci';
 
 @Injectable({
@@ -33,7 +32,7 @@ export class RciService {
   //actualizar rci
   actualizarRci(rci: Rci):Observable<Rci>{
     const url = `${this.url}/${rci.id}`; 
-    console.log("url a actualizar:", url, rci)
+    console.log("url a actualizar:", url, rci);
     return this.http.put<Rci>(url, rci);
   }
 

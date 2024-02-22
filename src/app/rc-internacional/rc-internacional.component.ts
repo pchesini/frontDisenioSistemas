@@ -5,6 +5,7 @@ import { Rci } from './rci';
 import { ActivatedRoute, Router } from '@angular/router';
 
 
+
 @Component({
   selector: 'app-rc-internacional',
   templateUrl: './rc-internacional.component.html',
@@ -90,6 +91,7 @@ export class RcInternacionalComponent {
       }
   }
   
+  //dispara el modo de edición en el modal
   setEditar(valor: boolean): void {
     this.editar = valor;
     if (valor) {
@@ -101,10 +103,10 @@ export class RcInternacionalComponent {
   cargar():void{
     this.activated.params.subscribe(
       param=>{
-        let id= param['id']; //acá está el id del enlace
-       
+        let id= param?.['id']; //acá está el id del enlace
+       console.log("id:", id);
         if(id){
-          this.editar = true; // Establecer editar en true si se proporciona un id
+          //this.editar = true; // Establecer editar en true si se proporciona un id
           this.rciService.get(id).subscribe(
             r=> {
               this.rci = r;
@@ -117,6 +119,7 @@ export class RcInternacionalComponent {
                 tituloTrabajo: r.tituloTrabajo,
                 autor: r.autor
               });
+              console.log("datos cargados:",r);
             }
           );
         }
@@ -124,28 +127,18 @@ export class RcInternacionalComponent {
     )
   }
   
-  //mostrar los datos obtenidos en el formulario
-  loadRciById(id: string): void {
-    this.rciService.get(id).subscribe(
-      rci => {
-        this.rci = rci;
-        // Asignar datos al formulario
-        this.formRci.patchValue({
-          reunion: rci.reunion,
-          pais: rci.pais,
-          fechaInicio: rci.fechaInicio,
-          expositor: rci.expositor,
-          tituloTrabajo: rci.tituloTrabajo,
-          autor: rci.autor
-        });
-      },
-      error => {
-        console.error('Error al cargar los datos del Rci:', error);
-      }
-    );
-  }
-
   actualizar():void {
+    // Asignar los nuevos valores del formulario a this.rci
+    this.rci = {
+      id: this.rci.id,
+      reunion: this.formRci.value.reunion,
+      pais: this.formRci.value.pais,
+      fechaInicio: this.formRci.value.fechaInicio,
+      expositor: this.formRci.value.expositor,
+      tituloTrabajo: this.formRci.value.tituloTrabajo,
+      autor: this.formRci.value.autor
+  };
+    console.log(this.rci);
     this.rciService.actualizarRci(this.rci).subscribe(
       r=> this.router.navigate(['/rci'])
     );
