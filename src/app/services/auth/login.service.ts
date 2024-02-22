@@ -18,7 +18,8 @@ export class LoginService {
   //recibe como parametro un objeto de tipo loginRequest
   login(credenciales:LoginRequest):Observable<Usuario>{
     //aca va la ruta del endpoint del backend
-    return this.http.get<Usuario>('././assets/userData.json').pipe (
+    //return this.http.get<Usuario>('././assets/userData.json')
+    return this.http.post<Usuario>("http://localhost:8080/usuario/login", credenciales).pipe (
       
       tap ((userData:Usuario) =>{
         this.currentUserData.next(userData);
