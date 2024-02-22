@@ -12,13 +12,16 @@ export class LoginComponent implements OnInit{
   loginError:string="";
   // se crea un objeto formulario con las validaciones
   formularioLogin=this.formbuilder.group({
-    email:['pablo@mail',[Validators.required, Validators.email]],
-    password:['1234',[Validators.required,]]
+    email:['',[Validators.required, Validators.email]],
+    password:['',[Validators.required,]]
   })
   // en el constructor se agrega el componente de rutas
   constructor(private formbuilder:FormBuilder, private router:Router, private loginService:LoginService){}
   ngOnInit(): void {
-      
+   /**/  this.formularioLogin = this.formbuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    });
   }
   // funcion para rerornar el email para usar en las validaciones del formulario
    get email(){

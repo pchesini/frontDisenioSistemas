@@ -12,20 +12,22 @@ export class PaginaPrincipalComponent implements OnInit, OnDestroy{
   userLoginOn:boolean = false;
   showList: string | null = null;
   //se agrego la funcionalidad de cerrar sesion pero no cambia el nombre por "salir"
-  usuarioLogeado:boolean = false;// 
+//  usuarioLogeado:boolean = false;// 
   userData?:Usuario;
   constructor(private loginService: LoginService) {
    
   }
   ngOnInit(): void {
-   /* this.loginService.currentUserLoginOn.subscribe({
+    this.loginService.currentUserLoginOn.subscribe({
       next:(userLoginOn) =>{
         this.userLoginOn=userLoginOn;
-      
-    })}*/
-  
+      }
+    });
     
   }
+  
+    
+  
   toggleList(listName: string): void {
     if (this.showList === listName) {
       this.showList = null; 
