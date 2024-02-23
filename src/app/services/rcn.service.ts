@@ -30,8 +30,8 @@ export class RcnService {
   }
 
   //actualizar rcn
-  actualizarRci(rci: Rcn):Observable<Rcn>{
-    return this.http.put<Rcn>(this.url, rci);
+  actualizarRcn(rcn: Rcn):Observable<Rcn>{
+    return this.http.put<Rcn>(this.url, rcn);
   }
 
   //eliminar rcn

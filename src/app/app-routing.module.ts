@@ -8,6 +8,7 @@ import { MostrarComponent }from './pages/mostrar/mostrar.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { RcNacionalComponent } from './rc-nacional/rc-nacional.component';
 import { RcInternacionalComponent } from './rc-internacional/rc-internacional.component';
+
 //le agrego las rutas
 const routes: Routes = [
   {path:'',redirectTo:'/inicio', pathMatch:'full'},
