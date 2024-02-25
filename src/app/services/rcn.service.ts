@@ -9,7 +9,7 @@ import { Rcn } from '../rc-nacional/rcn';
 export class RcnService {
 
   //acá va el endpoint
-  private url:string="http://localhost:3000/rcn"
+  private url:string="http://localhost:3000/rcn";
 
 
   constructor(private http: HttpClient) { }
@@ -25,7 +25,7 @@ export class RcnService {
   }
 
   //Obtener un rcn
-  get(id:number):Observable<Rcn> {
+  get(id:string):Observable<Rcn> {
     return this.http.get<Rcn>(this.url+'/'+id);
   }
 
@@ -35,7 +35,7 @@ export class RcnService {
   }
 
   //eliminar rcn
-  eliminar(id:number):Observable<Rcn> {
+  eliminar(id:string):Observable<Rcn> {
     return this.http.delete<Rcn>(this.url+'/'+id);
   }
 }
