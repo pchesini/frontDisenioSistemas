@@ -12,10 +12,10 @@
             </button>
             <ul *ngIf="showList === 'reunion'">
               <li>
-                <a [routerLink]="['/ruta-componente-nacional']">Reunión científica nacional.</a>
+                <a [routerLink]="['/rcn']">Reunión científica nacional.</a>
               </li>
               <li>
-                <a [routerLink]="['/ruta-componente-internacional']">Reunión científica internacional.</a>
+                <a [routerLink]="['/rci']">Reunión científica internacional.</a>
                 </li>
             </ul>
           </li>
@@ -37,9 +37,12 @@
           </li>
         </ul>
 
-  <hr class="separador">
+        <hr class="separador">
       </div>
-     
+
+      <div id="imagen-container" class="d-flex justify-content-center">
+        <img src="./assets/imagenes/Logo-GIUCT-claro.png" alt="Descripción de la imagen">
+      </div>
      <!-- <div id="imagen-container">
         <img id="mi-imagen" src="./assets/imagenes/Imagen1.png" alt="Descripción de la imagen">
       </div>

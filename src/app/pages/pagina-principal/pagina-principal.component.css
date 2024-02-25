@@ -6,6 +6,7 @@
   #imagen-container {
     text-align: center; /* Centrar la imagen */
     margin-top: 0px; /* Espaciado superior de la imagen */
+    margin-right: 300px;
   }
   
   #mi-imagen {

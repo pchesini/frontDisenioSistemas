@@ -19,7 +19,9 @@
           <i class="bi bi-person-fill"></i></a>
       
         <a *ngIf="!userLoginOn" routerLink="/iniciar-sesion" class="btn btn-iniciar-sesion">Entrar</a>
+        <a *ngIf="!userLoginOn" routerLink="/pagina-principal" class="btn btn-salir">Pagina principal</a>
         <a *ngIf="userLoginOn" (click)="logout()" class="btn btn-salir">Salir</a>
+        
       </div>
     </div>
   </div>
