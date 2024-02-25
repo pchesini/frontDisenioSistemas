@@ -1,4 +1,4 @@
-<h1 class="mt-3 mb-3">Reunión Científica Internacional</h1>
+<h1 class="mt-3 mb-3">Reunión Científica Nacional</h1>
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -50,14 +50,8 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">{{ editar ? 'Editar' : 'Nueva' }} reunión científica nacional</h1>
-
-          <button 
-            type="button" 
-            class="btn-close" 
-            data-bs-dismiss="modal" 
-            aria-label="Close">
-          </button>
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Nueva reunión científica nacional</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <form [formGroup]="formRcn" (submit)="onSubmit()" id="formRcn">  
