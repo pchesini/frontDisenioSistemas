@@ -117,7 +117,7 @@ export class RcInternacionalComponent {
                 tituloTrabajo: r.tituloTrabajo,
                 autor: r.autor
               });
-              console.log("datos cargados:",r);
+              
             }
           );
         }

@@ -3,7 +3,7 @@
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
     Nuevo
-  </button>
+</button>
 
 <table class="table table-responsive table-hover table-secondary">
     <thead class="table-dark">
@@ -28,7 +28,13 @@
             <td>{{rcn.tituloTrabajo}}</td>
             <td>{{rcn.autor}}</td>
             <td class="text-center">
-              <i class="bi bi-pencil-square" [routerLink]="['/rci', rcn.id]" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i>
+              <i 
+                class="bi bi-pencil-square" 
+                [routerLink]="['/rcn', rcn.id]" 
+                data-bs-toggle="modal" 
+                data-bs-target="#staticBackdrop"
+                (click)="setEditar(true)">
+              </i>
             </td>
             <td class="text-center">
               <i class="bi bi-trash3" (click)="delete(rcn)"></i>
@@ -44,8 +50,14 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">Nueva reunión científica internacional</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">{{ editar ? 'Editar' : 'Nueva' }} reunión científica nacional</h1>
+
+          <button 
+            type="button" 
+            class="btn-close" 
+            data-bs-dismiss="modal" 
+            aria-label="Close">
+          </button>
         </div>
         <div class="modal-body">
           <form [formGroup]="formRcn" (submit)="onSubmit()" id="formRcn">  
@@ -63,14 +75,14 @@
             <div class="mb-3">
                 <label for="ciudad" class="form-label">Ciudad</label>
                 <input type="text" formControlName="ciudad" placeholder="Ingrese una ciudad" class="form-control" id="ciudad">
-                <div class="alert alert-danger" *ngIf="formRcn.controls['pais'].invalid && formRcn.controls['pais'].touched">
+                <div class="alert alert-danger" *ngIf="formRcn.controls['ciudad'].invalid && formRcn.controls['ciudad'].touched">
                     <div *ngIf="formRcn.controls['ciudad']?.hasError('required')">La ciudad es requerido</div>
                 </div>
             </div>
 
             <div class="mb-3">
-                <label for="fecha" class="form-label">Fecha inicio</label>
-                <input type="fecha" class="form-control" id="fecha">
+                <label for="text" class="form-label">Fecha inicio</label>
+                <input type="text" class="form-control" id="fecha">
             </div>
 
             
@@ -104,8 +116,18 @@
           </form>..
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button role="button" form="formRci" class="btn btn-primary">Aceptar</button>
+          <button 
+            type="button" 
+            class="btn btn-secondary" 
+            data-bs-dismiss="modal">
+              Cerrar
+          </button>
+          <button 
+            role="button" 
+            form="formRcn" 
+            class="btn btn-primary">
+              {{ editar ? 'Guardar cambios' : 'Aceptar' }}
+          </button>
         </div>
       </div>
     </div>
