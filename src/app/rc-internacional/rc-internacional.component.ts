@@ -98,17 +98,17 @@ export class RcInternacionalComponent {
   }
 
   //para cargar los datos seleccionados con el boton de editar
-  cargar():void{
-    this.activated.params.subscribe(
-      param=>{
-        let id= param?.['id']; //acá está el id del enlace
-       console.log("id:", id);
-        if(id){
-          //this.editar = true; // Establecer editar en true si se proporciona un id
-          this.rciService.get(id).subscribe(
-            r=> {
-              this.rci = r;
-              // Asignar datos al formulario
+ cargar(): void {
+  this.activated.params.subscribe(
+    param => {
+      let id = param?.['id'];
+      console.log("id:", id);
+      if (id) {
+        this.rciService.get(id).subscribe(
+          r => {
+            this.rci = r;
+            if (r && r.fechaInicio) { // Verifica si r y r.fechaInicio están definidos
+              // Asignar datos al formulario solo si fechaInicio está definido
               this.formRci.patchValue({
                 reunion: r.reunion,
                 pais: r.pais,
@@ -117,13 +117,13 @@ export class RcInternacionalComponent {
                 tituloTrabajo: r.tituloTrabajo,
                 autor: r.autor
               });
-              
             }
-          );
-        }
+          }
+        );
       }
-    )
-  }
+    }
+  )
+}
   
   actualizar():void {
     // Asignar los nuevos valores del formulario a this.rci
