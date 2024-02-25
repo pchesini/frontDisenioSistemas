@@ -14,7 +14,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class RcInternacionalComponent {
 
   rciList: Rci[] = []; //colección de rci
- 
+  
   rci: Rci = {
     reunion: '',
     pais: '',
@@ -39,16 +39,14 @@ export class RcInternacionalComponent {
       tituloTrabajo: ['', [Validators.required]],
       autor: ['', [Validators.required]]
     });
-
   }
 
   ngOnInit(): void {
     this.rciService.getAllRci().subscribe(
       rci => this.rciList = rci
     );
-
+    
     this.loadRciData(); //se cargan los datos sin tener que refrescar cuando se agrega una nueva rci
-
   }
 
   loadRciData() {
@@ -138,7 +136,7 @@ export class RcInternacionalComponent {
       tituloTrabajo: this.formRci.value.tituloTrabajo,
       autor: this.formRci.value.autor
   };
-    console.log(this.rci);
+  
     this.rciService.actualizarRci(this.rci).subscribe(
       r=> this.router.navigate(['/rci'])
     );
