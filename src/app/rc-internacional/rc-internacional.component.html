@@ -17,7 +17,6 @@
             <th>Autor</th>
             <th>Editar</th>
             <th>Eliminar</th>
-            
         </tr>
     </thead>
     <tbody>
@@ -88,6 +87,7 @@
                   placeholder="Ingrese un pais" 
                   class="form-control" 
                   id="pais">
+
                 <div class="alert alert-danger" *ngIf="formRci.controls['pais'].invalid && formRci.controls['pais'].touched">
                     <div *ngIf="formRci.controls['pais']?.hasError('required')">El pais es requerido</div>
                 </div>
@@ -110,6 +110,7 @@
                   placeholder="Ingrese el expositor" 
                   class="form-control" 
                   id="expositor">
+
                 <div class="alert alert-danger" *ngIf="formRci.controls['expositor'].invalid && formRci.controls['expositor'].touched">
                     <div *ngIf="formRci.controls['expositor']?.hasError('required')">El nombre del expositor es requerido</div>
                 </div>
@@ -123,6 +124,7 @@
                   placeholder="Ingrese el titulo" 
                   class="form-control" 
                   id="tituloTrabajo">
+
                 <div class="alert alert-danger" *ngIf="formRci.controls['tituloTrabajo'].invalid && formRci.controls['tituloTrabajo'].touched">
                     <div *ngIf="formRci.controls['tituloTrabajo']?.hasError('required')">El titulo es requerido</div>
                 </div>
@@ -139,6 +141,7 @@
                   placeholder="Ingrese el autor" 
                   class="form-control" 
                   id="autor">
+                  
                 <div class="alert alert-danger" *ngIf="formRci.controls['autor'].invalid && formRci.controls['autor'].touched">
                     <div *ngIf="formRci.controls['autor']?.hasError('required')">El autor es requerido</div>
                 </div>

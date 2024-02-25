@@ -1,5 +1,5 @@
 export class Rcn {
-    id?: number;
+    id?: string;
     reunion: string;
     ciudad: string;
     fechaInicio: string;
@@ -7,7 +7,7 @@ export class Rcn {
     tituloTrabajo: string;
     autor: string;
   
-    constructor(id: number, reunion: string, ciudad: string, fechaInicio: string, expositor: string, tituloTrabajo: string, autor: string) {
+    constructor(id: string, reunion: string, ciudad: string, fechaInicio: string, expositor: string, tituloTrabajo: string, autor: string) {
       this.id = id;
       this.reunion = reunion;
       this.ciudad = ciudad;

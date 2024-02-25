@@ -14,7 +14,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class RcInternacionalComponent {
 
   rciList: Rci[] = []; //colección de rci
- 
+  
   rci: Rci = {
     reunion: '',
     pais: '',
@@ -119,7 +119,7 @@ export class RcInternacionalComponent {
                 tituloTrabajo: r.tituloTrabajo,
                 autor: r.autor
               });
-              console.log("datos cargados:",r);
+              
             }
           );
         }
