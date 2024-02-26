@@ -1,6 +1,8 @@
 <div class="container-fluid">
     <div class="MiContenedor">
-      
+      <div class="row">
+        <!-- Columna para el sidebar -->
+        <div class="col-md-9">
       <div class="sidebar">
         <h3 class="sidebar-title">Comunicaciones Científicas</h3> 
 
@@ -12,10 +14,10 @@
             </button>
             <ul *ngIf="showList === 'reunion'">
               <li>
-                <a [routerLink]="['/ruta-componente-nacional']">Reunión científica nacional.</a>
+                <a [routerLink]="['/rcn']">Reunión científica nacional.</a>
               </li>
               <li>
-                <a [routerLink]="['/ruta-componente-internacional']">Reunión científica internacional.</a>
+                <a [routerLink]="['/rci']">Reunión científica internacional.</a>
                 </li>
             </ul>
           </li>
@@ -45,4 +47,6 @@
       </div>
     -->
     </div>
+    <div class="col-md-3">
+      <img src="./assets/imagenes/Logo GIUCT.png" alt="Descripción de la imagen">
   </div>
