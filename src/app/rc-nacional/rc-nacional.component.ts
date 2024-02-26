@@ -20,6 +20,8 @@ export class RcNacionalComponent {
     autor: ''
   };
 
+  editar: boolean = false;
+  
   //formulario validaciones
   formRcn:FormGroup;
 
@@ -41,7 +43,7 @@ export class RcNacionalComponent {
 
     this.loadRciData(); //se cargan los datos sin tener que refrescar cuando se agrega una nueva rci
 
-    this.cargar();
+    
   }
 
   loadRciData() {
@@ -50,56 +52,98 @@ export class RcNacionalComponent {
     );
   }
 
+  //carga del formulario
   onSubmit() {
-    if (this.formRcn.valid) {
+    //si el id del rci existe se modifica:
+    if (this.rcn.id){
+        this.actualizar();
+        console.log("Rcn modificado: ",this.rcn);
+        
+    }  else if (this.formRcn.valid) {
 
-      // Guardar la información del formulario en la variable rci
-      this.rcn = {
-        reunion: this.formRcn.value.reunion,
-        ciudad: this.formRcn.value.ciudad,
-        fechaInicio: this.formRcn.value.fechaInicio,
-        expositor: this.formRcn.value.expositor,
-        tituloTrabajo: this.formRcn.value.tituloTrabajo,
-        autor: this.formRcn.value.autor
-
-      }
+        // Guardar la información del formulario en la variable rci
+        this.rcn = {
+          reunion: this.formRcn.value.reunion,
+          ciudad: this.formRcn.value.ciudad,
+          fechaInicio: this.formRcn.value.fechaInicio,
+          expositor: this.formRcn.value.expositor,
+          tituloTrabajo: this.formRcn.value.tituloTrabajo,
+          autor: this.formRcn.value.autor
   
-      // Lógica para manejar el envío del formulario aquí
-      console.log(this.rcn);
-      this.rcnService.createRci(this.rcn).subscribe(
-        res=>{
-          this.loadRciData(); // Vuelve a cargar los datos después de la creación exitosa
-          this.router.navigate(['rcn']);
         }
+    
+        // Lógica para manejar el envío del formulario aquí
+        console.log(this.rcn);
+        this.rcnService.createRci(this.rcn).subscribe(
+          res=>{
+            this.loadRciData(); // Vuelve a cargar los datos después de la creación exitosa
+            this.router.navigate(['rcn']);
+          }
         );
-    } else {
-      // Lógica para manejar un formulario no válido aquí
-      console.log('El formulario no es válido, no se puede enviar.');
+      } else {
+        // Lógica para manejar un formulario no válido aquí
+        console.log('El formulario no es válido, no se puede enviar.');
+      }
+  }
+
+  //dispara el modo de edición en el modal
+  setEditar(valor: boolean): void {
+    this.editar = valor;
+    if (valor) {
+      this.cargar();
     }
   }
-  
+
   //para cargar los datos seleccionados con el boton de editar
   cargar():void{
     this.activated.params.subscribe(
-      e=>{
-        let idString=e['id']; //acá está el id del enlace
-       let id = parseInt(idString, 10);
+      param=>{
+        let id= param?.['id']; //acá está el id del enlace
+       console.log("id:", id);
         if(id){
+          //this.editar = true; // Establecer editar en true si se proporciona un id
           this.rcnService.get(id).subscribe(
-            r=> this.rcn = r
+            r=> {
+              this.rcn = r;
+              // Asignar datos al formulario
+              this.formRcn.patchValue({
+                reunion: r.reunion,
+                ciudad: r.ciudad,
+                fechaInicio: r.fechaInicio,
+                expositor: r.expositor,
+                tituloTrabajo: r.tituloTrabajo,
+                autor: r.autor
+              });
+              console.log("datos cargados:",r);
+            }
           );
         }
-        console.log("id: ", id, this.rcn);
       }
     )
   }
   
+  actualizar():void {
+    // Asignar los nuevos valores del formulario a this.rci
+    this.rcn = {
+      id: this.rcn.id,
+      reunion: this.formRcn.value.reunion,
+      ciudad: this.formRcn.value.cidad,
+      fechaInicio: this.formRcn.value.fechaInicio,
+      expositor: this.formRcn.value.expositor,
+      tituloTrabajo: this.formRcn.value.tituloTrabajo,
+      autor: this.formRcn.value.autor
+  };
+    console.log(this.rcn);
+    this.rcnService.actualizarRcn(this.rcn).subscribe(
+      r=> this.router.navigate(['/rcn'])
+    );
+  }
 
   ///eliminar una rci
-delete(rci: Rcn): void {
-  if (rci && rci.id) { // Comprobar si rci y rci.id están definidos y no son nulos
+delete(rcn: Rcn): void {
+  if (rcn && rcn.id) { // Comprobar si rci y rci.id están definidos y no son nulos
     console.log("deleted");
-    this.rcnService.eliminar(rci.id).subscribe(
+    this.rcnService.eliminar(rcn.id).subscribe(
       () => {
         // Después de eliminar la rci, actualiza la lista de rcn
         this.rcnService.getAllRcn().subscribe(

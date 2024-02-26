@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './compartida/header/header.component';
 import { FooterComponent } from './compartida/footer/footer.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import {LoginComponent} from './auth/login/login.component';
+import { LoginComponent } from './auth/login/login.component';
 import { NavComponent } from './compartida/nav/nav.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';

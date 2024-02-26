@@ -1,3 +1,4 @@
+<div class="d-flex">
 <div class="container-fluid">
     <div class="MiContenedor">
       <div class="row">
@@ -10,7 +11,7 @@
         <ul class="nav flex-column">
           <li class="nav-item">
             <button class="nav-link" (click)="toggleList('reunion')">
-              <p><i class="fas fa-book"></i> Trabajos presentados en Congresos y Reuniones Vientíficas</p>
+              <p><i class="fas fa-book"></i> Trabajos presentados en Congresos y Reuniones Científicas</p>
             </button>
             <ul *ngIf="showList === 'reunion'">
               <li>
@@ -39,14 +40,14 @@
           </li>
         </ul>
 
-  <hr class="separador">
+        <hr class="separador">
       </div>
-     
-     <!-- <div id="imagen-container">
-        <img id="mi-imagen" src="./assets/imagenes/Imagen1.png" alt="Descripción de la imagen">
-      </div>
-    -->
     </div>
     <div class="col-md-3">
       <img src="./assets/imagenes/Logo GIUCT.png" alt="Descripción de la imagen">
   </div>
+
+  <div id="imagen-container" class="d-flex justify-content-center flex-grow-1 align-self-start">
+    <img src="./assets/imagenes/Logo-GIUCT-claro.png" alt="Descripción de la imagen">
+   </div>
+</div>

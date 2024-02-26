@@ -1,3 +1,7 @@
+.container-fluid {
+  padding: 0;
+}
+
 .MiContenedor {
     display: flex; /* Utilizar flexbox */
     justify-content: space-between; /* Distribuir los elementos horizontalmente */
@@ -6,6 +10,7 @@
   #imagen-container {
     text-align: center; /* Centrar la imagen */
     margin-top: 0px; /* Espaciado superior de la imagen */
+    margin-right: 300px;
   }
   
   #mi-imagen {
@@ -14,7 +19,7 @@
   }
   
   .sidebar {
-    border-radius: 10px;
+    border-radius: 0 0 10px 10px;
     padding: 20px;
     width: 250px;
     background-color:  rgb(176, 156, 209);
@@ -41,7 +46,7 @@
   .sidebar ul ul li {
     margin-bottom: 5px; 
     border-bottom: 1px solid #ccc; 
-  padding-bottom: 5px; 
+    padding-bottom: 5px; 
   }
   .sidebar ul ul li:last-child {
     border-bottom: none; 

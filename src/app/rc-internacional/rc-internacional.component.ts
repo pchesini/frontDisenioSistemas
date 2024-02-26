@@ -14,7 +14,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class RcInternacionalComponent {
 
   rciList: Rci[] = []; //colección de rci
- 
+  
   rci: Rci = {
     reunion: '',
     pais: '',
@@ -39,16 +39,14 @@ export class RcInternacionalComponent {
       tituloTrabajo: ['', [Validators.required]],
       autor: ['', [Validators.required]]
     });
-
   }
 
   ngOnInit(): void {
     this.rciService.getAllRci().subscribe(
       rci => this.rciList = rci
     );
-
+    
     this.loadRciData(); //se cargan los datos sin tener que refrescar cuando se agrega una nueva rci
-
   }
 
   loadRciData() {
@@ -100,17 +98,17 @@ export class RcInternacionalComponent {
   }
 
   //para cargar los datos seleccionados con el boton de editar
-  cargar():void{
-    this.activated.params.subscribe(
-      param=>{
-        let id= param?.['id']; //acá está el id del enlace
-       console.log("id:", id);
-        if(id){
-          //this.editar = true; // Establecer editar en true si se proporciona un id
-          this.rciService.get(id).subscribe(
-            r=> {
-              this.rci = r;
-              // Asignar datos al formulario
+ cargar(): void {
+  this.activated.params.subscribe(
+    param => {
+      let id = param?.['id'];
+      console.log("id:", id);
+      if (id) {
+        this.rciService.get(id).subscribe(
+          r => {
+            this.rci = r;
+            if (r && r.fechaInicio) { // Verifica si r y r.fechaInicio están definidos
+              // Asignar datos al formulario solo si fechaInicio está definido
               this.formRci.patchValue({
                 reunion: r.reunion,
                 pais: r.pais,
@@ -119,13 +117,13 @@ export class RcInternacionalComponent {
                 tituloTrabajo: r.tituloTrabajo,
                 autor: r.autor
               });
-              console.log("datos cargados:",r);
             }
-          );
-        }
+          }
+        );
       }
-    )
-  }
+    }
+  )
+}
   
   actualizar():void {
     // Asignar los nuevos valores del formulario a this.rci
@@ -138,7 +136,7 @@ export class RcInternacionalComponent {
       tituloTrabajo: this.formRci.value.tituloTrabajo,
       autor: this.formRci.value.autor
   };
-    console.log(this.rci);
+  
     this.rciService.actualizarRci(this.rci).subscribe(
       r=> this.router.navigate(['/rci'])
     );
