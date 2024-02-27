@@ -56,6 +56,8 @@ export class RcInternacionalComponent {
     this.rciService.getAllRci().subscribe(
       rciList => this.rciList = rciList
     );
+
+    
   }
 
   //carga del formulario
@@ -63,8 +65,6 @@ export class RcInternacionalComponent {
     //si el id del rci existe se modifica:
     if (this.rci.id){
         this.actualizar();
-        console.log("Rci modificado: ",this.rci);
-        
     }  else if (this.formRci.valid) {
 
         // Guardar la información del formulario en la variable rci
@@ -100,31 +100,34 @@ export class RcInternacionalComponent {
   }
 
   //para cargar los datos seleccionados con el boton de editar
-  cargar():void{
-    this.activated.params.subscribe(
-      param=>{
-        let id= param?.['id']; //acá está el id del enlace
-       console.log("id:", id);
-        if(id){
-          //this.editar = true; // Establecer editar en true si se proporciona un id
-          this.rciService.get(id).subscribe(
-            r=> {
-              this.rci = r;
-              // Asignar datos al formulario
-              this.formRci.patchValue({
-                reunion: r.reunion,
-                pais: r.pais,
-                fechaInicio: r.fechaInicio,
-                expositor: r.expositor,
-                tituloTrabajo: r.tituloTrabajo,
-                autor: r.autor
-              }); 
-            }
-          );
-        }
+  cargar(): void {
+    this.activated.params.subscribe(params => {
+      let id = params?.['id'];
+      console.log("id:", id);
+      if (id) {
+        this.editar = true;
+        this.rciService.get(id).subscribe(
+          r => {
+            this.rci = r;
+            // Asignar datos al formulario
+            this.formRci.patchValue({
+              reunion: r.reunion,
+              pais: r.pais,
+              fechaInicio: r.fechaInicio,
+              expositor: r.expositor,
+              tituloTrabajo: r.tituloTrabajo,
+              autor: r.autor
+            });
+          }
+        );
+      } else {
+        // Si id no está definido, es una nueva reunión, establece editar en false y limpia el formulario
+        this.editar = false;
+        this.formRci.reset(); // Reinicia el formulario
       }
-    )
+    });
   }
+  
   
   actualizar():void {
     // Asignar los nuevos valores del formulario a this.rci
