@@ -17,6 +17,7 @@ import { PaginaPrincipalComponent } from './pages/pagina-principal/pagina-princi
 import { RcNacionalComponent } from './rc-nacional/rc-nacional.component';
 import { RcInternacionalComponent } from './rc-internacional/rc-internacional.component';
 import { FormsModule } from '@angular/forms';
+import { AutoresComponent } from './pages/autores/autores.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { FormsModule } from '@angular/forms';
     PerfilComponent,
     PaginaPrincipalComponent,
     RcNacionalComponent,
-    RcInternacionalComponent
+    RcInternacionalComponent,
+    AutoresComponent
   ],
   imports: [
     CommonModule,

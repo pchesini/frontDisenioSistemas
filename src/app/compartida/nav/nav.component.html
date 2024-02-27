@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg ">
   <div class="container-fluid">
    
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,7 +20,7 @@
       
         <a *ngIf="!userLoginOn" routerLink="/iniciar-sesion" class="btn btn-iniciar-sesion">Entrar</a>
         <a *ngIf="!userLoginOn" routerLink="/pagina-principal" class="btn btn-salir">Pagina principal</a>
-        <a *ngIf="userLoginOn" (click)="logout()" class="btn btn-salir">Salir</a>
+        <a *ngIf="!userLoginOn" routerLink="/inicio" class="btn btn-salir">Salir</a>
         
       </div>
     </div>

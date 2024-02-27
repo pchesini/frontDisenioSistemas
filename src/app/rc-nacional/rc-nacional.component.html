@@ -37,7 +37,7 @@
               </i>
             </td>
             <td class="text-center">
-              <i class="bi bi-trash3" (click)="delete(rcn)"></i>
+              <i class="bi bi-trash3" (click)="delete(rcn)"></i> <!--(click)="abrirMensaje2()"-->
             </td>
         </tr>
     </tbody>
@@ -47,7 +47,7 @@
   
   <!-- Modal -->
   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-scrollable"><!--se cambió acá-->
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="staticBackdropLabel">Nueva reunión científica nacional</h1>
@@ -76,10 +76,9 @@
 
             <div class="mb-3">
                 <label for="text" class="form-label">Fecha inicio</label>
-                <input type="text" class="form-control" id="fecha">
+                <input type="text" formControlName="expositor" placeholder="Ingrese formato dd/mm/aaaa" class="form-control" id="fecha">
             </div>
 
-            
             <div class="mb-3">
                 <label for="expositor" class="form-label">Expositor</label>
                 <input type="text" formControlName="expositor" placeholder="Ingrese el expositor" class="form-control" id="expositor">
@@ -95,10 +94,6 @@
                     <div *ngIf="formRcn.controls['tituloTrabajo']?.hasError('required')">El titulo es requerido</div>
                 </div>
             </div>
-
-            <div class="mb-3">
-                <label for="autor" class="form-label"></label>
-            </div>
             <div class="mb-3">
                 <label for="autor" class="form-label">Autor</label>
                 <input type="text" formControlName="autor" placeholder="Ingrese el autor" class="form-control" id="autor">
@@ -107,19 +102,13 @@
                 </div>
             </div>
 
-          </form>..
+          </form>
         </div>
         <div class="modal-footer">
-          <button 
-            type="button" 
-            class="btn btn-secondary" 
-            data-bs-dismiss="modal">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
               Cerrar
           </button>
-          <button 
-            role="button" 
-            form="formRcn" 
-            class="btn btn-primary">
+          <button role="button" form="formRcn" class="btn btn-primary" (click)="abrirMensaje()">
               {{ editar ? 'Guardar cambios' : 'Aceptar' }}
           </button>
         </div>

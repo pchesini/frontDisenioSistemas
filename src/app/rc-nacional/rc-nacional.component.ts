@@ -3,6 +3,7 @@ import { Rcn } from './rcn';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RcnService } from '../services/rcn.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-rc-nacional',
@@ -10,6 +11,78 @@ import { RcnService } from '../services/rcn.service';
   styleUrls: ['./rc-nacional.component.css']
 })
 export class RcNacionalComponent {
+
+  abrirMensaje(): void{
+    Swal.fire({
+      title: "¿Confirma que desea guardar?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Guardar",
+      denyButtonText: `No guardar`
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire("¡Guardado con exito!", "", "success");
+      } else if (result.isDenied) {
+        Swal.fire("No se guardaron los cambios", "", "info");
+      }
+    });
+    }
+
+    abrirMensaje2(): void{
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: "btn btn-success",
+          cancelButton: "btn btn-danger"
+        },
+        buttonsStyling: false
+      });
+      swalWithBootstrapButtons.fire({
+        title: "¿Usted está seguro que desea eliminar la reunión?",
+        text: "¡No podrás revertir esto!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Si, borrar!",
+        cancelButtonText: "No, cancelar!",
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          swalWithBootstrapButtons.fire({
+            title: "Borrado!",
+            text: "Su reunión fue borrada exitosamente",
+            icon: "success"
+          });
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire({
+            title: "Cancelado",
+            text: "La reunión no se borró",
+            icon: "error"
+          });
+        }
+      });
+    }
+
+    /* para el mensaje del botón editar
+    abrirMensaje3(): void{
+      Swal.fire({
+        title: "¿Desea confirmar los cambios?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Guardar",
+        denyButtonText: `No guardar`
+      }).then((result) => {
+        
+        if (result.isConfirmed) {
+          Swal.fire("¡Guardado con exito!", "", "success");
+        } else if (result.isDenied) {
+          Swal.fire("No se guardaron los cambios", "", "info");
+        }
+      });
+      }*/
+
   rcnList: Rcn[] = []; //colección de rci
   rcn: Rcn = {
     reunion: '',
@@ -24,6 +97,7 @@ export class RcNacionalComponent {
   
   //formulario validaciones
   formRcn:FormGroup;
+  model: any;
 
   constructor(private rcnService: RcnService, private fb: FormBuilder, private router: Router, private activated: ActivatedRoute){
 
