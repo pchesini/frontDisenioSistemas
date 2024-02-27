@@ -3,6 +3,8 @@ import { RciService } from '../services/rci.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Rci } from './rci';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LocalDateTime } from '@js-joda/core';
+
 
 
 
@@ -14,11 +16,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class RcInternacionalComponent {
 
   rciList: Rci[] = []; //colección de rci
+  fechaActual = LocalDateTime.now();
   
   rci: Rci = {
     reunion: '',
     pais: '',
-    fechaInicio: '',
+    fechaInicio: this.fechaActual,
     expositor: '',
     tituloTrabajo: '',
     autor: ''
@@ -29,12 +32,12 @@ export class RcInternacionalComponent {
   //formulario validaciones
   formRci:FormGroup;
 
-  
   constructor(private rciService: RciService, private fb: FormBuilder, private router: Router, private activated: ActivatedRoute){
 
     this.formRci = this.fb.group({
       reunion: ['', [Validators.required]],
       pais:['', [Validators.required]],
+      fechaInicio: [null, Validators.required],
       expositor: ['', [Validators.required]],
       tituloTrabajo: ['', [Validators.required]],
       autor: ['', [Validators.required]]
@@ -72,9 +75,8 @@ export class RcInternacionalComponent {
           expositor: this.formRci.value.expositor,
           tituloTrabajo: this.formRci.value.tituloTrabajo,
           autor: this.formRci.value.autor
-  
         }
-    
+        
         // Lógica para manejar el envío del formulario aquí
         console.log(this.rci);
         this.rciService.createRci(this.rci).subscribe(
@@ -98,17 +100,17 @@ export class RcInternacionalComponent {
   }
 
   //para cargar los datos seleccionados con el boton de editar
- cargar(): void {
-  this.activated.params.subscribe(
-    param => {
-      let id = param?.['id'];
-      console.log("id:", id);
-      if (id) {
-        this.rciService.get(id).subscribe(
-          r => {
-            this.rci = r;
-            if (r && r.fechaInicio) { // Verifica si r y r.fechaInicio están definidos
-              // Asignar datos al formulario solo si fechaInicio está definido
+  cargar():void{
+    this.activated.params.subscribe(
+      param=>{
+        let id= param?.['id']; //acá está el id del enlace
+       console.log("id:", id);
+        if(id){
+          //this.editar = true; // Establecer editar en true si se proporciona un id
+          this.rciService.get(id).subscribe(
+            r=> {
+              this.rci = r;
+              // Asignar datos al formulario
               this.formRci.patchValue({
                 reunion: r.reunion,
                 pais: r.pais,
@@ -116,14 +118,13 @@ export class RcInternacionalComponent {
                 expositor: r.expositor,
                 tituloTrabajo: r.tituloTrabajo,
                 autor: r.autor
-              });
+              }); 
             }
-          }
-        );
+          );
+        }
       }
-    }
-  )
-}
+    )
+  }
   
   actualizar():void {
     // Asignar los nuevos valores del formulario a this.rci
@@ -167,4 +168,6 @@ export class RcInternacionalComponent {
     }
   }
 
+
+  
 }

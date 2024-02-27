@@ -23,7 +23,7 @@
        <tr *ngFor="let rci of rciList">
             <td>{{rci.reunion}}</td>
             <td>{{rci.pais}}</td>
-            <td>{{rci.fechaInicio}}</td>
+            <td>{{rci.fechaInicio }}</td>
             <td>{{rci.expositor}}</td>
             <td>{{rci.tituloTrabajo}}</td>
             <td>{{rci.autor}}</td>
@@ -93,13 +93,14 @@
                 </div>
             </div>
 
-            <div class="mb-3">
-                <label for="fechaInicio" class="form-label">Fecha inicio</label>
-                <input 
-                  type="text" 
+            <div class="mb-3" [formGroup]="formRci">
+              <label for="fechaInicio" class="form-label">Fecha inicio</label>
+              <input 
+                  type="date"
                   class="form-control" 
-                  id="fechaInicio">
-            </div>
+                  id="fechaInicio" 
+                  formControlName="fechaInicio">
+          </div>
 
             
             <div class="mb-3">

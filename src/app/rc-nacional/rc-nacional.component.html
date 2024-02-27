@@ -74,10 +74,14 @@
                 </div>
             </div>
 
-            <div class="mb-3">
-                <label for="text" class="form-label">Fecha inicio</label>
-                <input type="text" class="form-control" id="fecha">
-            </div>
+            <div class="mb-3" [formGroup]="formRcn">
+              <label for="fechaInicio" class="form-label">Fecha inicio</label>
+              <input 
+                  type="date"
+                  class="form-control" 
+                  id="fechaInicio" 
+                  formControlName="fechaInicio">
+          </div>
 
             
             <div class="mb-3">

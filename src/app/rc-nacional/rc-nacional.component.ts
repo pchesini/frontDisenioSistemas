@@ -3,6 +3,7 @@ import { Rcn } from './rcn';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RcnService } from '../services/rcn.service';
+import { LocalDateTime } from '@js-joda/core';
 
 @Component({
   selector: 'app-rc-nacional',
@@ -11,10 +12,13 @@ import { RcnService } from '../services/rcn.service';
 })
 export class RcNacionalComponent {
   rcnList: Rcn[] = []; //colección de rci
+  fechaActual = LocalDateTime.now();
+
+  
   rcn: Rcn = {
     reunion: '',
     ciudad: '',
-    fechaInicio: '',
+    fechaInicio: this.fechaActual,
     expositor: '',
     tituloTrabajo: '',
     autor: ''
@@ -30,6 +34,7 @@ export class RcNacionalComponent {
     this.formRcn = this.fb.group({
       reunion: ['', [Validators.required]],
       ciudad:['', [Validators.required]],
+      fechaInicio: [null, Validators.required],
       expositor: ['', [Validators.required]],
       tituloTrabajo: ['', [Validators.required]],
       autor: ['', [Validators.required]]

@@ -8,7 +8,7 @@ import { Rci } from '../rc-internacional/rci';
 })
 export class RciService {
 
-  //acá va el endpoint
+  //acá va el endpoint: http://Reunión-científica/alta
   private url:string="http://localhost:3000/rci";
 
 
