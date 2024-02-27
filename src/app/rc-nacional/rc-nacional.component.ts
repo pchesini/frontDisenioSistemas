@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RcnService } from '../services/rcn.service';
 import Swal from 'sweetalert2';
+import { LocalDateTime } from '@js-joda/core';
 
 @Component({
   selector: 'app-rc-nacional',
@@ -84,10 +85,13 @@ export class RcNacionalComponent {
       }*/
 
   rcnList: Rcn[] = []; //colección de rci
+  fechaActual = LocalDateTime.now();
+
+  
   rcn: Rcn = {
     reunion: '',
     ciudad: '',
-    fechaInicio: '',
+    fechaInicio: this.fechaActual,
     expositor: '',
     tituloTrabajo: '',
     autor: ''
@@ -104,6 +108,7 @@ export class RcNacionalComponent {
     this.formRcn = this.fb.group({
       reunion: ['', [Validators.required]],
       ciudad:['', [Validators.required]],
+      fechaInicio: [null, Validators.required],
       expositor: ['', [Validators.required]],
       tituloTrabajo: ['', [Validators.required]],
       autor: ['', [Validators.required]]
@@ -130,9 +135,7 @@ export class RcNacionalComponent {
   onSubmit() {
     //si el id del rci existe se modifica:
     if (this.rcn.id){
-        this.actualizar();
-        console.log("Rcn modificado: ",this.rcn);
-        
+        this.actualizar();   
     }  else if (this.formRcn.valid) {
 
         // Guardar la información del formulario en la variable rci
@@ -169,31 +172,33 @@ export class RcNacionalComponent {
   }
 
   //para cargar los datos seleccionados con el boton de editar
-  cargar():void{
-    this.activated.params.subscribe(
-      param=>{
-        let id= param?.['id']; //acá está el id del enlace
-       console.log("id:", id);
-        if(id){
-          //this.editar = true; // Establecer editar en true si se proporciona un id
-          this.rcnService.get(id).subscribe(
-            r=> {
-              this.rcn = r;
-              // Asignar datos al formulario
-              this.formRcn.patchValue({
-                reunion: r.reunion,
-                ciudad: r.ciudad,
-                fechaInicio: r.fechaInicio,
-                expositor: r.expositor,
-                tituloTrabajo: r.tituloTrabajo,
-                autor: r.autor
-              });
-              console.log("datos cargados:",r);
-            }
-          );
-        }
+  //para cargar los datos seleccionados con el boton de editar
+  cargar(): void {
+    this.activated.params.subscribe(params => {
+      let id = params?.['id'];
+      console.log("id:", id);
+      if (id) {
+        this.editar = true;
+        this.rcnService.get(id).subscribe(
+          r => {
+            this.rcn = r;
+            // Asignar datos al formulario
+            this.formRcn.patchValue({
+              reunion: r.reunion,
+              pais: r.ciudad,
+              fechaInicio: r.fechaInicio,
+              expositor: r.expositor,
+              tituloTrabajo: r.tituloTrabajo,
+              autor: r.autor
+            });
+          }
+        );
+      } else {
+        // Si id no está definido, es una nueva reunión, establece editar en false y limpia el formulario
+        this.editar = false;
+        this.formRcn.reset(); // Reinicia el formulario
       }
-    )
+    });
   }
   
   actualizar():void {

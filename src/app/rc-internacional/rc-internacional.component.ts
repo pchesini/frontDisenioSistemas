@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Rci } from './rci';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { LocalDateTime } from '@js-joda/core';
 
 
 @Component({
@@ -85,11 +86,12 @@ export class RcInternacionalComponent {
       }*/
 
   rciList: Rci[] = []; //colección de rci
+  fechaActual = LocalDateTime.now();
   
   rci: Rci = {
     reunion: '',
     pais: '',
-    fechaInicio: '',
+    fechaInicio: this.fechaActual,
     expositor: '',
     tituloTrabajo: '',
     autor: ''
@@ -100,12 +102,12 @@ export class RcInternacionalComponent {
   //formulario validaciones
   formRci:FormGroup;
 
-  
   constructor(private rciService: RciService, private fb: FormBuilder, private router: Router, private activated: ActivatedRoute){
 
     this.formRci = this.fb.group({
       reunion: ['', [Validators.required]],
       pais:['', [Validators.required]],
+      fechaInicio: [null, Validators.required],
       expositor: ['', [Validators.required]],
       tituloTrabajo: ['', [Validators.required]],
       autor: ['', [Validators.required]]
@@ -124,41 +126,43 @@ export class RcInternacionalComponent {
     this.rciService.getAllRci().subscribe(
       rciList => this.rciList = rciList
     );
+
+    
   }
 
   //carga del formulario
   onSubmit() {
-    //si el id del rci existe se modifica:
-    if (this.rci.id){
-        this.actualizar();
-        console.log("Rci modificado: ",this.rci);
-        
-    }  else if (this.formRci.valid) {
-
-        // Guardar la información del formulario en la variable rci
-        this.rci = {
-          reunion: this.formRci.value.reunion,
-          pais: this.formRci.value.pais,
-          fechaInicio: this.formRci.value.fechaInicio,
-          expositor: this.formRci.value.expositor,
-          tituloTrabajo: this.formRci.value.tituloTrabajo,
-          autor: this.formRci.value.autor
-  
+    if (this.rci.id) {
+      // Si el ID de rci existe, se modifica
+      this.actualizar();
+    } else if (this.formRci.valid) {
+      // Si el formulario es válido, se crea un nuevo rci
+      this.rci = {
+        reunion: this.formRci.value.reunion,
+        pais: this.formRci.value.pais,
+        fechaInicio: this.formRci.value.fechaInicio,
+        expositor: this.formRci.value.expositor,
+        tituloTrabajo: this.formRci.value.tituloTrabajo,
+        autor: this.formRci.value.autor
+      };
+      
+      console.log('Enviando nuevo rci:', this.rci);
+      
+      this.rciService.createRci(this.rci).subscribe(
+        res => {
+          console.log('Nuevo rci creado:', res);
+          this.loadRciData(); // Vuelve a cargar los datos después de la creación exitosa
+          this.router.navigate(['rci']);
+        },
+        error => {
+          console.error('Error al crear nuevo rci:', error);
         }
-    
-        // Lógica para manejar el envío del formulario aquí
-        console.log(this.rci);
-        this.rciService.createRci(this.rci).subscribe(
-          res=>{
-            this.loadRciData(); // Vuelve a cargar los datos después de la creación exitosa
-            this.router.navigate(['rci']);
-          }
-        );
-      } else {
-        // Lógica para manejar un formulario no válido aquí
-        console.log('El formulario no es válido, no se puede enviar.');
-      }
+      );
+    } else {
+      console.log('El formulario no es válido, no se puede enviar.');
+    }
   }
+  
   
   //dispara el modo de edición en el modal
   setEditar(valor: boolean): void {
@@ -169,32 +173,34 @@ export class RcInternacionalComponent {
   }
 
   //para cargar los datos seleccionados con el boton de editar
- cargar(): void {
-  this.activated.params.subscribe(
-    param => {
-      let id = param?.['id'];
+  cargar(): void {
+    this.activated.params.subscribe(params => {
+      let id = params?.['id'];
       console.log("id:", id);
       if (id) {
+        this.editar = true;
         this.rciService.get(id).subscribe(
           r => {
             this.rci = r;
-            if (r && r.fechaInicio) { // Verifica si r y r.fechaInicio están definidos
-              // Asignar datos al formulario solo si fechaInicio está definido
-              this.formRci.patchValue({
-                reunion: r.reunion,
-                pais: r.pais,
-                fechaInicio: r.fechaInicio,
-                expositor: r.expositor,
-                tituloTrabajo: r.tituloTrabajo,
-                autor: r.autor
-              });
-            }
+            // Asignar datos al formulario
+            this.formRci.patchValue({
+              reunion: r.reunion,
+              pais: r.pais,
+              fechaInicio: r.fechaInicio,
+              expositor: r.expositor,
+              tituloTrabajo: r.tituloTrabajo,
+              autor: r.autor
+            });
           }
         );
+      } else {
+        // Si id no está definido, es una nueva reunión, establece editar en false y limpia el formulario
+        this.editar = false;
+        this.formRci.reset(); // Reinicia el formulario
       }
-    }
-  )
-}
+    });
+  }
+  
   
   actualizar():void {
     // Asignar los nuevos valores del formulario a this.rci
@@ -238,4 +244,6 @@ export class RcInternacionalComponent {
     }
   }
 
+
+  
 }
