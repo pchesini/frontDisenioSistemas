@@ -1,49 +1,53 @@
 <div class="d-flex">
-<div class="container-fluid">
-    <div class="MiContenedor">
-      
-      <div class="sidebar">
-        <h3 class="sidebar-title">Comunicaciones Científicas</h3> 
-
-  <hr class="separador">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <button class="nav-link" (click)="toggleList('reunion')">
-              <p><i class="fas fa-book"></i> Trabajos presentados en Congresos y Reuniones Científicas</p>
-            </button>
-            <ul *ngIf="showList === 'reunion'">
-              <li>
-                <a [routerLink]="['/rcn']">Reunión científica nacional.</a>
-              </li>
-              <li>
-                <a [routerLink]="['/rci']">Reunión científica internacional.</a>
+  <div class="container-fluid">
+      <div class="MiContenedor">
+        <div class="row">
+          <!-- Columna para el sidebar -->
+          <div class="col-md-9">
+        <div class="sidebar">
+          <h3 class="sidebar-title">Comunicaciones Científicas</h3> 
+  
+    <hr class="separador">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <button class="nav-link" (click)="toggleList('reunion')">
+                <p><i class="fas fa-book"></i> Trabajos presentados en Congresos y Reuniones Científicas</p>
+              </button>
+              <ul *ngIf="showList === 'reunion'">
+                <li>
+                  <a [routerLink]="['/rcn']">Reunión científica nacional.</a>
                 </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <button class="nav-link" (click)="toggleList('trabajo')">
-              <p><i class="fas fa-book"></i> Trabajos Realizados y Publicados.</p>
-            </button>
-            <ul *ngIf="showList === 'trabajo'">
-              <li>
-                <a [routerLink]="['/ruta-componente-trabajo']">Trabajos publicados en revistas nacionales.</a>
-              </li>
-                <li>Presentación de artículos en congresos.</li>
-                <li>Libros o capítulos de libros.</li>
-                <li>Eventos organizados.</li>
-                <li>Artículos de divulgación, informes y memorias técnicas.</li>
-                <li>Patentes desarrollos y certificados de aptitud técnica.</li>
-                <li>Registro de propiedad.</li>
-            </ul>
-          </li>
-        </ul>
-
-        <hr class="separador">
+                <li>
+                  <a [routerLink]="['/rci']">Reunión científica internacional.</a>
+                  </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" (click)="toggleList('trabajo')">
+                <p><i class="fas fa-book"></i> Trabajos Realizados y Publicados.</p>
+              </button>
+              <ul *ngIf="showList === 'trabajo'">
+                <li>
+                  <a [routerLink]="['/ruta-componente-trabajo']">Trabajos publicados en revistas nacionales.</a>
+                </li>
+                  <li>Presentación de artículos en congresos.</li>
+                  <li>Libros o capítulos de libros.</li>
+                  <li>Eventos organizados.</li>
+                  <li>Artículos de divulgación, informes y memorias técnicas.</li>
+                  <li>Patentes desarrollos y certificados de aptitud técnica.</li>
+                  <li>Registro de propiedad.</li>
+              </ul>
+            </li>
+          </ul>
+  
+          <hr class="separador">
+        </div>
+        </div>
       </div>
-    </div>
+     
+  
+    <div id="imagen-container" class="d-flex justify-content-center  flex-grow-1 align-self-start">
+      <img src="./assets/imagenes/Logo-GIUCT-claro.png" alt="Descripción de la imagen">
+     </div>
   </div>
-
-  <div id="imagen-container" class="d-flex justify-content-center flex-grow-1 align-self-start">
-    <img src="./assets/imagenes/Logo-GIUCT-claro.png" alt="Descripción de la imagen">
-   </div>
-</div>
+  
