@@ -5,23 +5,12 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-        <a *ngIf="userLoginOn" class="nav-link" routerLink="pagina-principal">Home</a>
-        </li>
-        <li class="nav-item">
-          <a *ngIf="userLoginOn" class="nav-link" routerLink="nueva-reunion"> <i class="fas fa-plus" style="color: green;"> </i> Reunion</a>
-          </li>
-        
-      </ul>
+     
       <div class="nav-derecha ms-auto"> 
-        <a *ngIf="userLoginOn" routerLink="perfil" class="btn btn-usuario">
-          <i class="bi bi-person-fill"></i></a>
-      
+        <a *ngIf="userLoginOn" routerLink="perfil" class="btn btn-usuario"><i class="bi bi-person-fill"></i>Perfil</a>
         <a *ngIf="!userLoginOn" routerLink="/iniciar-sesion" class="btn btn-iniciar-sesion">Entrar</a>
-        <a *ngIf="!userLoginOn" routerLink="/pagina-principal" class="btn btn-salir">Pagina principal</a>
-        <a *ngIf="userLoginOn" (click)="logout()" class="btn btn-salir">Salir</a>
-        
+        <a *ngIf="!userLoginOn" routerLink="/pagina-principal" class="btn btn-salir">Home</a>
+        <a *ngIf="!userLoginOn" routerLink="/inicio" class="btn btn-salir">Salir</a>
       </div>
     </div>
   </div>
