@@ -20,8 +20,8 @@ export class RcnService {
   }
 
   //crear rcn
-  createRci(rci: Rcn):Observable<Rcn> {
-    return this.http.post<Rcn>(this.url + '/alta', rci);
+  createRci(rcn: Rcn):Observable<Rcn> {
+    return this.http.post<Rcn>(this.url + '/alta', rcn);
   }
 
   //Obtener un rcn
@@ -36,6 +36,7 @@ export class RcnService {
 
   //eliminar rcn
   eliminar(id:string):Observable<Rcn> {
-    return this.http.delete<Rcn>(this.url+'/'+id);
+    //return this.http.delete<Rcn>(this.url+'/baja'+id);
+    return this.http.delete<Rcn>(`${this.url}/baja/${id}`);
   }
 }

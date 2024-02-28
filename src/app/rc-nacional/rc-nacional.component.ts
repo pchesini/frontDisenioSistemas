@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RcnService } from '../services/rcn.service';
 import Swal from 'sweetalert2';
 import { LocalDateTime } from '@js-joda/core';
+//import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-rc-nacional',
@@ -13,7 +14,7 @@ import { LocalDateTime } from '@js-joda/core';
 })
 export class RcNacionalComponent {
 
-  abrirMensaje(): void{
+  abrirMensaje(): void {
     Swal.fire({
       title: "¿Confirma que desea guardar?",
       showDenyButton: true,
@@ -21,14 +22,24 @@ export class RcNacionalComponent {
       confirmButtonText: "Guardar",
       denyButtonText: `No guardar`
     }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        Swal.fire("¡Guardado con exito!", "", "success");
+       //aca se crea el objeto
+        this.rcnService.createRci(this.rcn).subscribe(
+          (response) => {
+            // Mostrar mensaje de éxito después de que se completa la petición HTTP
+            Swal.fire("¡Guardado con éxito!", "", "success");
+          },
+          (error) => {
+            // Mostrar mensaje de error si hay algún problema con la petición HTTP
+            Swal.fire("Error al guardar", "", "error");
+            console.error("Error al guardar:", error);
+          }
+        );
       } else if (result.isDenied) {
         Swal.fire("No se guardaron los cambios", "", "info");
       }
     });
-    }
+  }
 
     abrirMensaje2(): void{
       const swalWithBootstrapButtons = Swal.mixin({
@@ -54,7 +65,7 @@ export class RcNacionalComponent {
             icon: "success"
           });
         } else if (
-          /* Read more about handling dismissals below */
+        
           result.dismiss === Swal.DismissReason.cancel
         ) {
           swalWithBootstrapButtons.fire({
@@ -140,6 +151,7 @@ export class RcNacionalComponent {
 
         // Guardar la información del formulario en la variable rci
         this.rcn = {
+         // id: uuidv4(), // Generar un id único
           reunion: this.formRcn.value.reunion,
           ciudad: this.formRcn.value.ciudad,
           fechaInicio: this.formRcn.value.fechaInicio,
@@ -206,7 +218,7 @@ export class RcNacionalComponent {
     this.rcn = {
       id: this.rcn.id,
       reunion: this.formRcn.value.reunion,
-      ciudad: this.formRcn.value.cidad,
+      ciudad: this.formRcn.value.ciudad,
       fechaInicio: this.formRcn.value.fechaInicio,
       expositor: this.formRcn.value.expositor,
       tituloTrabajo: this.formRcn.value.tituloTrabajo,
