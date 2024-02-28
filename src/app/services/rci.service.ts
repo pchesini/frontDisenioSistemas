@@ -8,26 +8,26 @@ import { Rci } from '../rc-internacional/rci';
 })
 export class RciService {
 
-  //acá va el endpoint: http://Reunión-científica/alta
-  private url:string="http://localhost:3000/rci";
+  //acá va el endpoint
+  private url:string="http://localhost:8080/Reunion-internacional";
 
 
   constructor(private http: HttpClient) { }
 
   //Obtener todas las reuniones cientificas internacionales (rci)
-  getAllRci(): Observable<Rci[]> {
-    // Obtener todos los registros que no estén marcados como eliminados
-    return this.http.get<Rci[]>(this.url);
+  getAllRci():Observable<Rci[]> {
+    return this.http.get<Rci[]>(this.url+ '/lista');
   }
+ 
 
   //crear rci
   createRci(rci: Rci):Observable<Rci> {
-    return this.http.post<Rci>(this.url, rci);
+    return this.http.post<Rci>(this.url+ '/alta', rci);
   }
 
   //Obtener un rci
   get(id:string):Observable<Rci> {
-    return this.http.get<Rci>(this.url+'/'+id);
+    return this.http.get<Rci>(this.url+'/'+ id);
   }
 
   //actualizar rci
@@ -36,10 +36,10 @@ export class RciService {
     return this.http.put<Rci>(url, rci);
   }
 
-  //eliminar lógicamente un rci
-  eliminar(id: string): Observable<Rci> {
-    // En lugar de eliminar físicamente, actualizamos el registro marcándolo como eliminado
-    return this.http.put<Rci>(`${this.url}/${id}`, { eliminado: true });
+  //eliminar rci
+  eliminar(id:string):Observable<Rci> {
+   // return this.http.delete<Rci>(this.url+'/baja'+id);
+    return this.http.delete<Rci>(`${this.url}/baja/${id}`);
   }
 
   /*eliminar físicamente un rci
