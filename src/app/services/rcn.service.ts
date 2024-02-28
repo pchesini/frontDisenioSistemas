@@ -9,19 +9,19 @@ import { Rcn } from '../rc-nacional/rcn';
 export class RcnService {
 
   //acá va el endpoint
-  private url:string="http://localhost:3000/rcn";
+  private url:string="http://localhost:8080/Reunion-nacional";
 
 
   constructor(private http: HttpClient) { }
 
   //Obtener todas las reuniones cientificas nacionales (rcn)
  getAllRcn():Observable<Rcn[]> {
-    return this.http.get<Rcn[]>(this.url);
+    return this.http.get<Rcn[]>(this.url+ '/lista');
   }
 
   //crear rcn
   createRci(rci: Rcn):Observable<Rcn> {
-    return this.http.post<Rcn>(this.url, Rcn);
+    return this.http.post<Rcn>(this.url + '/alta', rci);
   }
 
   //Obtener un rcn

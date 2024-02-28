@@ -66,7 +66,7 @@ export class RcNacionalComponent {
       });
     }
 
-    /* para el mensaje del botón editar
+     //para el mensaje del botón editar
     abrirMensaje3(): void{
       Swal.fire({
         title: "¿Desea confirmar los cambios?",
@@ -82,7 +82,7 @@ export class RcNacionalComponent {
           Swal.fire("No se guardaron los cambios", "", "info");
         }
       });
-      }*/
+      }
 
   rcnList: Rcn[] = []; //colección de rci
   fechaActual = LocalDateTime.now();

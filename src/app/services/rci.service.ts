@@ -9,24 +9,25 @@ import { Rci } from '../rc-internacional/rci';
 export class RciService {
 
   //acá va el endpoint: http://Reunión-científica/alta
-  private url:string="http://localhost:3000/rci";
+  private url:string="http://localhost:8080/Reunion-internacional";
 
 
   constructor(private http: HttpClient) { }
 
   //Obtener todas las reuniones cientificas internacionales (rci)
   getAllRci():Observable<Rci[]> {
-    return this.http.get<Rci[]>(this.url);
+    return this.http.get<Rci[]>(this.url+ '/lista');
   }
+ 
 
   //crear rci
   createRci(rci: Rci):Observable<Rci> {
-    return this.http.post<Rci>(this.url, rci);
+    return this.http.post<Rci>(this.url+ '/alta', rci);
   }
 
   //Obtener un rci
   get(id:string):Observable<Rci> {
-    return this.http.get<Rci>(this.url+'/'+id);
+    return this.http.get<Rci>(this.url+'/'+ id);
   }
 
   //actualizar rci
@@ -38,7 +39,8 @@ export class RciService {
 
   //eliminar rci
   eliminar(id:string):Observable<Rci> {
-    return this.http.delete<Rci>(this.url+'/'+id);
+   // return this.http.delete<Rci>(this.url+'/baja'+id);
+    return this.http.delete<Rci>(`${this.url}/baja/${id}`);
   }
 
 }

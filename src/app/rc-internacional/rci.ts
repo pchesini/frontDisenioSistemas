@@ -6,7 +6,7 @@ export class Rci {
     pais: string;
     fechaInicio: LocalDateTime;
     expositor: string;
-    tituloTrabajo: string;
+    tituloTrabajo: string; 
     autor: string;
   
     constructor(id: string, reunion: string, pais: string, fechaInicio: LocalDateTime, expositor: string, tituloTrabajo: string, autor: string) {
