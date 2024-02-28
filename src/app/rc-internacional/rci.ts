@@ -8,8 +8,9 @@ export class Rci {
     expositor: string;
     tituloTrabajo: string;
     autor: string;
+    eliminado: boolean;
   
-    constructor(id: string, reunion: string, pais: string, fechaInicio: LocalDateTime, expositor: string, tituloTrabajo: string, autor: string) {
+    constructor(id: string, reunion: string, pais: string, fechaInicio: LocalDateTime, expositor: string, tituloTrabajo: string, autor: string, eliminado: boolean) {
       this.id = id;
       this.reunion = reunion;
       this.pais = pais;
@@ -17,5 +18,6 @@ export class Rci {
       this.expositor = expositor;
       this.tituloTrabajo = tituloTrabajo;
       this.autor = autor;
+      this.eliminado = eliminado;
     }
   }

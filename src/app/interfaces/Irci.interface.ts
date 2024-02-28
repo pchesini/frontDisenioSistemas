@@ -6,4 +6,5 @@ export interface Irci {
     expositor: string;
     tituloTrabajo: string;
     autor: string;
+    eliminado: boolean;
 }

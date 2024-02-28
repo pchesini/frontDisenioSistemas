@@ -94,7 +94,8 @@ export class RcInternacionalComponent {
     fechaInicio: this.fechaActual,
     expositor: '',
     tituloTrabajo: '',
-    autor: ''
+    autor: '', 
+    eliminado: false
   };
 
   editar: boolean = false;
@@ -116,18 +117,11 @@ export class RcInternacionalComponent {
 
   ngOnInit(): void {
     this.rciService.getAllRci().subscribe(
-      rci => this.rciList = rci
-    );
-    
-    this.loadRciData(); //se cargan los datos sin tener que refrescar cuando se agrega una nueva rci
-  }
+      rciList => {
+        this.rciList = rciList;
+      console.log(this.rciList)}
+    )
 
-  loadRciData() {
-    this.rciService.getAllRci().subscribe(
-      rciList => this.rciList = rciList
-    );
-
-    
   }
 
   //carga del formulario
@@ -143,7 +137,8 @@ export class RcInternacionalComponent {
         fechaInicio: this.formRci.value.fechaInicio,
         expositor: this.formRci.value.expositor,
         tituloTrabajo: this.formRci.value.tituloTrabajo,
-        autor: this.formRci.value.autor
+        autor: this.formRci.value.autor, 
+        eliminado: false
       };
       
       console.log('Enviando nuevo rci:', this.rci);
@@ -151,7 +146,6 @@ export class RcInternacionalComponent {
       this.rciService.createRci(this.rci).subscribe(
         res => {
           console.log('Nuevo rci creado:', res);
-          this.loadRciData(); // Vuelve a cargar los datos después de la creación exitosa
           this.router.navigate(['rci']);
         },
         error => {
@@ -211,7 +205,8 @@ export class RcInternacionalComponent {
       fechaInicio: this.formRci.value.fechaInicio,
       expositor: this.formRci.value.expositor,
       tituloTrabajo: this.formRci.value.tituloTrabajo,
-      autor: this.formRci.value.autor
+      autor: this.formRci.value.autor,
+      eliminado: false
   };
   
     this.rciService.actualizarRci(this.rci).subscribe(
@@ -219,7 +214,36 @@ export class RcInternacionalComponent {
     );
   }
 
-  ///eliminar una rci
+  //eliminado lógico de una rci
+  delete(rci: Rci): void {
+    if (!rci || !rci.id) {
+      console.error("No se puede eliminar porque no se ha proporcionado un ID válido.");
+      return;
+    }
+  
+    console.log("Marcado como eliminado");
+  
+    // Realizamos una solicitud al servidor para marcar el objeto como eliminado
+    this.rciService.eliminar(rci.id).subscribe(
+      () => {
+        console.log("Objeto marcado como eliminado en el servidor.");
+        // Eliminamos el objeto de la lista en el frontend
+        this.rciList = this.rciList.filter(item => item.id !== rci.id);
+      },
+      error => {
+        console.error("Error al marcar como eliminado el objeto en el servidor:", error);
+      }
+    );
+  }
+
+
+
+
+
+
+
+
+  /*eliminado físico de una rci
   delete(rci: Rci): void {
     if (rci && rci.id) { // Comprobar si rci y rci.id están definidos y no son nulos
       console.log("deleted");
@@ -242,7 +266,7 @@ export class RcInternacionalComponent {
     }   else  {
       console.error("No se puede eliminar la rci porque no tiene un ID definido.");
     }
-  }
+  }*/
 
 
   

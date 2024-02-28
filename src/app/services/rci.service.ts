@@ -15,7 +15,8 @@ export class RciService {
   constructor(private http: HttpClient) { }
 
   //Obtener todas las reuniones cientificas internacionales (rci)
-  getAllRci():Observable<Rci[]> {
+  getAllRci(): Observable<Rci[]> {
+    // Obtener todos los registros que no estén marcados como eliminados
     return this.http.get<Rci[]>(this.url);
   }
 
@@ -32,13 +33,19 @@ export class RciService {
   //actualizar rci
   actualizarRci(rci: Rci):Observable<Rci>{
     const url = `${this.url}/${rci.id}`; 
-    console.log("url a actualizar:", url, rci);
     return this.http.put<Rci>(url, rci);
   }
 
-  //eliminar rci
+  //eliminar lógicamente un rci
+  eliminar(id: string): Observable<Rci> {
+    // En lugar de eliminar físicamente, actualizamos el registro marcándolo como eliminado
+    return this.http.put<Rci>(`${this.url}/${id}`, { eliminado: true });
+  }
+
+  /*eliminar físicamente un rci
   eliminar(id:string):Observable<Rci> {
     return this.http.delete<Rci>(this.url+'/'+id);
-  }
+  }*/
+
 
 }
